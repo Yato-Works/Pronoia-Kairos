@@ -1,0 +1,4 @@
+seed,e2e_s_lru,e2e_s_adaptive,delta_e2e_pct,prefill_ms_lru,prefill_ms_adaptive,delta_prefill_pct,r_overhead,reuse_tokens_lru,reuse_tokens_adaptive,prefill_tokens_lru,prefill_tokens_adaptive,queue_depth_mean_adaptive
+1,172.6832,166.072,3.829,434.299,440.935,-1.528,0.0004,7846,5921,65612,67537,1.0
+2,157.3341,150.7797,4.166,426.418,393.921,7.621,0.0003,7704,10899,65615,62420,1.0
+3,150.6331,150.6767,-0.029,431.995,431.354,0.148,,5286,5286,68181,68181,1.0

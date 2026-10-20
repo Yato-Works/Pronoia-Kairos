@@ -1,0 +1,50 @@
+[
+  {
+    "calibration": "raw",
+    "regime": "mid",
+    "capacity": 6,
+    "hits": 163,
+    "misses": 137,
+    "prefetch_issued": 20,
+    "prefetch_hits": 4,
+    "prefetch_wasted": 16,
+    "prefetch_accuracy": 0.2,
+    "saved_compute": 51.2,
+    "prediction_overhead": 15.0,
+    "prefetch_waste_cost": 97.92000000000002,
+    "net_gain": -61.72000000000001,
+    "net_gain_positive": false
+  },
+  {
+    "calibration": "recency",
+    "regime": "mid",
+    "capacity": 6,
+    "hits": 165,
+    "misses": 135,
+    "prefetch_issued": 18,
+    "prefetch_hits": 3,
+    "prefetch_wasted": 14,
+    "prefetch_accuracy": 0.16666666666666666,
+    "saved_compute": 102.4,
+    "prediction_overhead": 15.0,
+    "prefetch_waste_cost": 85.68,
+    "net_gain": 1.7199999999999989,
+    "net_gain_positive": true
+  },
+  {
+    "calibration": "popularity",
+    "regime": "mid",
+    "capacity": 6,
+    "hits": 193,
+    "misses": 107,
+    "prefetch_issued": 1,
+    "prefetch_hits": 0,
+    "prefetch_wasted": 0,
+    "prefetch_accuracy": 0.0,
+    "saved_compute": 819.2,
+    "prediction_overhead": 15.0,
+    "prefetch_waste_cost": 0.0,
+    "net_gain": 804.2,
+    "net_gain_positive": true
+  }
+]

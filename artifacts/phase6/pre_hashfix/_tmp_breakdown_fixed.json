@@ -1,0 +1,257 @@
+{
+  "W8_RAG": {
+    "family": "W8_RAG",
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "goodput_mean": {
+      "E_planning": 0.016445730942834334,
+      "E_edf": 0.016445730942834334,
+      "F_full": 0.016469295980165752
+    },
+    "edf_gain_per_seed": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "prefetch_gain_per_seed": [
+      0.0,
+      3.2e-05,
+      4.3e-05,
+      3e-06,
+      3.1e-05,
+      3.2e-05
+    ],
+    "total_gain_per_seed": [
+      0.0,
+      3.2e-05,
+      4.3e-05,
+      3e-06,
+      3.1e-05,
+      3.2e-05
+    ],
+    "edf_gain_mean": 0.0,
+    "prefetch_gain_mean": 2.3565037331420638e-05,
+    "total_gain_mean": 2.3565037331420638e-05,
+    "prefetch_hits_total": {
+      "E_edf": 0,
+      "F_full": 176
+    },
+    "prefetch_waste_total": {
+      "E_edf": 0,
+      "F_full": 11
+    }
+  },
+  "W7_agent": {
+    "family": "W7_agent",
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "goodput_mean": {
+      "E_planning": 0.006609793532148234,
+      "E_edf": 0.006609793532148234,
+      "F_full": 0.00789686359092131
+    },
+    "edf_gain_per_seed": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "prefetch_gain_per_seed": [
+      0.000787,
+      0.003402,
+      0.000842,
+      -0.001031,
+      0.002683,
+      0.001041
+    ],
+    "total_gain_per_seed": [
+      0.000787,
+      0.003402,
+      0.000842,
+      -0.001031,
+      0.002683,
+      0.001041
+    ],
+    "edf_gain_mean": 0.0,
+    "prefetch_gain_mean": 0.0012870700587730767,
+    "total_gain_mean": 0.0012870700587730767,
+    "prefetch_hits_total": {
+      "E_edf": 0,
+      "F_full": 165
+    },
+    "prefetch_waste_total": {
+      "E_edf": 0,
+      "F_full": 12
+    }
+  },
+  "W4_long_ctx_high_reuse": {
+    "family": "W4_long_ctx_high_reuse",
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "goodput_mean": {
+      "E_planning": 0.006911343811979938,
+      "E_edf": 0.006911343811979938,
+      "F_full": 0.007227162043331427
+    },
+    "edf_gain_per_seed": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "prefetch_gain_per_seed": [
+      0.000508,
+      2.7e-05,
+      0.000172,
+      0.000358,
+      -1e-06,
+      0.000831
+    ],
+    "total_gain_per_seed": [
+      0.000508,
+      2.7e-05,
+      0.000172,
+      0.000358,
+      -1e-06,
+      0.000831
+    ],
+    "edf_gain_mean": 0.0,
+    "prefetch_gain_mean": 0.00031581823135148944,
+    "total_gain_mean": 0.00031581823135148944,
+    "prefetch_hits_total": {
+      "E_edf": 0,
+      "F_full": 180
+    },
+    "prefetch_waste_total": {
+      "E_edf": 0,
+      "F_full": 25
+    }
+  },
+  "W5_concurrent_long_low_reuse": {
+    "family": "W5_concurrent_long_low_reuse",
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "goodput_mean": {
+      "E_planning": 0.006829809947787167,
+      "E_edf": 0.007589340416777508,
+      "F_full": 0.007856880154532437
+    },
+    "edf_gain_per_seed": [
+      0.001067,
+      0.001345,
+      0.000402,
+      0.000811,
+      0.000399,
+      0.000534
+    ],
+    "prefetch_gain_per_seed": [
+      0.0004,
+      0.0,
+      0.001205,
+      0.0,
+      0.0,
+      -0.0
+    ],
+    "total_gain_per_seed": [
+      0.001467,
+      0.001345,
+      0.001607,
+      0.000811,
+      0.000399,
+      0.000534
+    ],
+    "edf_gain_mean": 0.00075953046899034,
+    "prefetch_gain_mean": 0.0002675397377549287,
+    "total_gain_mean": 0.0010270702067452686,
+    "prefetch_hits_total": {
+      "E_edf": 0,
+      "F_full": 0
+    },
+    "prefetch_waste_total": {
+      "E_edf": 0,
+      "F_full": 0
+    }
+  },
+  "W6_concurrent_long_high_reuse": {
+    "family": "W6_concurrent_long_high_reuse",
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "goodput_mean": {
+      "E_planning": 0.016129180069103247,
+      "E_edf": 0.015678139163505526,
+      "F_full": 0.016566221970530468
+    },
+    "edf_gain_per_seed": [
+      0.0009,
+      0.000329,
+      -0.004229,
+      0.000278,
+      -1.5e-05,
+      3.1e-05
+    ],
+    "prefetch_gain_per_seed": [
+      0.000417,
+      0.000118,
+      0.004555,
+      4.3e-05,
+      9.2e-05,
+      0.000104
+    ],
+    "total_gain_per_seed": [
+      0.001317,
+      0.000447,
+      0.000326,
+      0.00032,
+      7.7e-05,
+      0.000135
+    ],
+    "edf_gain_mean": -0.0004510409055977201,
+    "prefetch_gain_mean": 0.0008880828070249395,
+    "total_gain_mean": 0.0004370419014272193,
+    "prefetch_hits_total": {
+      "E_edf": 0,
+      "F_full": 166
+    },
+    "prefetch_waste_total": {
+      "E_edf": 0,
+      "F_full": 7
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "families": [
+    "W1_short_chat_low_reuse",
+    "W2_short_chat_high_reuse",
+    "W3_long_ctx_low_reuse",
+    "W4_long_ctx_high_reuse",
+    "W5_concurrent_long_low_reuse",
+    "W6_concurrent_long_high_reuse",
+    "W7_agent",
+    "W8_RAG"
+  ],
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "n_pairs": 96,
+  "n_runs": 384,
+  "mc1_all_ok": true,
+  "mc2_all_ok": true,
+  "mc3_all_ok": true,
+  "mc4_max_abs_diff": 4.98778762531005e-07,
+  "mc4_tol": 1e-06,
+  "mc4_all_ok": true,
+  "mc5_all_ok": true,
+  "elapsed_sec": 5.997
+}

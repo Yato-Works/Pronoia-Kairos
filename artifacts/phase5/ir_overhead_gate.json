@@ -1,0 +1,93 @@
+{
+  "gate_passed": true,
+  "overhead_ns": 706500,
+  "gain_ns": 1941500,
+  "gain_by_pass_ns": {
+    "redundant_recall_elimination": 190400,
+    "dead_context_elimination": 1754700,
+    "prefetch_hoisting": -3600
+  },
+  "pass_removed_ops": {
+    "redundant_recall_elimination": 24,
+    "dead_context_elimination": 234
+  },
+  "removed_by_kind": {
+    "MEMORY_RECALL": 258
+  },
+  "hoisted_transfers": 3,
+  "ops_before": 525,
+  "ops_after": 267,
+  "requests": 6,
+  "repeats": 7,
+  "rows": [
+    {
+      "request_id": "r0",
+      "profile": "confident_prefetch",
+      "overhead_ns": 124400,
+      "exec_naive_ns": 461200,
+      "exec_opt_ns": 129200,
+      "gain_ns": 332000,
+      "ops_before": 89,
+      "ops_after": 46
+    },
+    {
+      "request_id": "r1",
+      "profile": "low_confidence_fallback",
+      "overhead_ns": 111700,
+      "exec_naive_ns": 452600,
+      "exec_opt_ns": 120900,
+      "gain_ns": 331700,
+      "ops_before": 86,
+      "ops_after": 43
+    },
+    {
+      "request_id": "r2",
+      "profile": "confident_prefetch",
+      "overhead_ns": 125100,
+      "exec_naive_ns": 462300,
+      "exec_opt_ns": 129100,
+      "gain_ns": 333200,
+      "ops_before": 89,
+      "ops_after": 46
+    },
+    {
+      "request_id": "r3",
+      "profile": "low_confidence_fallback",
+      "overhead_ns": 112800,
+      "exec_naive_ns": 446400,
+      "exec_opt_ns": 121300,
+      "gain_ns": 325100,
+      "ops_before": 86,
+      "ops_after": 43
+    },
+    {
+      "request_id": "r4",
+      "profile": "confident_prefetch",
+      "overhead_ns": 125600,
+      "exec_naive_ns": 433100,
+      "exec_opt_ns": 124000,
+      "gain_ns": 309100,
+      "ops_before": 89,
+      "ops_after": 46
+    },
+    {
+      "request_id": "r5",
+      "profile": "low_confidence_fallback",
+      "overhead_ns": 106900,
+      "exec_naive_ns": 428200,
+      "exec_opt_ns": 117800,
+      "gain_ns": 310400,
+      "ops_before": 86,
+      "ops_after": 43
+    }
+  ],
+  "ratio": 2.7480537862703467,
+  "config": {
+    "token_budget": 2048,
+    "quality_epsilon": 1.0,
+    "quality_constraint_active": false,
+    "n_candidates": 48,
+    "repeats": 7,
+    "clock": "perf_counter_ns (control-plane wall-clock, same clock both sides)"
+  }
+}

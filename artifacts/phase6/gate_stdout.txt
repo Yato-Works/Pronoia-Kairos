@@ -1,0 +1,19 @@
+==============================================================================
+Phase 6 - Full Runtime gate (Plan.md Section 93)
+gate_passed = True  (wins 5/8, required 5; regressions 0; F quality breaches 0)
+==============================================================================
+family                        strong         F-goodput     delta     naive        A        D        E
+-----------------------------------------------------------------------------------------------------
+W1_short_chat_low_reuse       A_naive          0.01674  -0.00015  -0.00015  0.01690  0.01675  0.01674
+W2_short_chat_high_reuse      B_predictive     0.01626   0.00000   0.00087  0.01539  0.01626  0.01626
+W3_long_ctx_low_reuse         E_planning       0.00569   0.00000   0.00412  0.00157  0.00157  0.00569
+W4_long_ctx_high_reuse        E_planning       0.00722   0.00031   0.00169  0.00553  0.00642  0.00691
+W5_concurrent_long_low_reuse  E_planning       0.00759   0.00076   0.00182  0.00577  0.00577  0.00683
+W6_concurrent_long_high_reuse E_planning       0.01640   0.00027   0.01437  0.00203  0.01508  0.01613
+W7_agent                      E_planning       0.00972   0.00311   0.00887  0.00085  0.00488  0.00661
+W8_RAG                        E_planning       0.01657   0.00012   0.00607  0.01050  0.01118  0.01645
+-----------------------------------------------------------------------------------------------------
+columns: goodput = SLO goodput (Section 66); delta = F - strong;
+naive = F - A (end-to-end effect); A/D/E = mean goodputs.
+F quality breaches across families: 0
+artifact: C:\Users\smily\Pronoia-Kairos\artifacts\phase6\full_runtime_gate.json

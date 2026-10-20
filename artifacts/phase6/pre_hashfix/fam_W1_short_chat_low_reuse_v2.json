@@ -1,0 +1,119 @@
+{
+  "W1_short_chat_low_reuse": {
+    "spec": {
+      "name": "W1_short_chat_low_reuse",
+      "n_requests": 48,
+      "kv_capacity_tokens": 768,
+      "context_budget_tokens": 768,
+      "slo_standard": 90.0,
+      "slo_tight": 90.0,
+      "tight_fraction": 0.0
+    },
+    "configs": {
+      "A_naive": {
+        "goodput_mean": 0.016895984554503973,
+        "goodput_std": 0.0005005093371027454,
+        "slo_met_mean": 1.0,
+        "ttft_p95_mean": 37.27041666666667,
+        "hit_rate_mean": 0.5,
+        "quality_breaches_total": 0,
+        "evictions_mean": 114.16666666666667,
+        "makespan_mean": 2842.967353873321,
+        "ir_ops_removed_total": 0,
+        "prefetch_issued_total": 0,
+        "prefetch_hits_total": 0,
+        "prefetch_waste_total": 0,
+        "quality_loss_mean": 0.0
+      },
+      "B_predictive": {
+        "goodput_mean": 0.016749474044389163,
+        "goodput_std": 0.0004943913127611877,
+        "slo_met_mean": 1.0,
+        "ttft_p95_mean": 40.24591669965146,
+        "hit_rate_mean": 0.020833333333333332,
+        "quality_breaches_total": 0,
+        "evictions_mean": 223.33333333333334,
+        "makespan_mean": 2867.8207213754863,
+        "ir_ops_removed_total": 0,
+        "prefetch_issued_total": 0,
+        "prefetch_hits_total": 0,
+        "prefetch_waste_total": 0,
+        "quality_loss_mean": 0.0
+      },
+      "C_queue": {
+        "goodput_mean": 0.016895984554503973,
+        "goodput_std": 0.0005005093371027454,
+        "slo_met_mean": 1.0,
+        "ttft_p95_mean": 37.27041666666667,
+        "hit_rate_mean": 0.5,
+        "quality_breaches_total": 0,
+        "evictions_mean": 114.16666666666667,
+        "makespan_mean": 2842.967353873321,
+        "ir_ops_removed_total": 0,
+        "prefetch_issued_total": 0,
+        "prefetch_hits_total": 0,
+        "prefetch_waste_total": 0,
+        "quality_loss_mean": 0.0
+      },
+      "D_semantic": {
+        "goodput_mean": 0.016749474044389163,
+        "goodput_std": 0.0004943913127611877,
+        "slo_met_mean": 1.0,
+        "ttft_p95_mean": 40.24591669965146,
+        "hit_rate_mean": 0.020833333333333332,
+        "quality_breaches_total": 0,
+        "evictions_mean": 223.33333333333334,
+        "makespan_mean": 2867.8207213754863,
+        "ir_ops_removed_total": 0,
+        "prefetch_issued_total": 0,
+        "prefetch_hits_total": 0,
+        "prefetch_waste_total": 0,
+        "quality_loss_mean": 0.0
+      },
+      "E_planning": {
+        "goodput_mean": 0.016742900934037203,
+        "goodput_std": 0.0004826438862566785,
+        "slo_met_mean": 1.0,
+        "ttft_p95_mean": 40.24591669965146,
+        "hit_rate_mean": 0.020833333333333332,
+        "quality_breaches_total": 0,
+        "evictions_mean": 226.16666666666666,
+        "makespan_mean": 2868.8540547088196,
+        "ir_ops_removed_total": 0,
+        "prefetch_issued_total": 0,
+        "prefetch_hits_total": 0,
+        "prefetch_waste_total": 0,
+        "quality_loss_mean": 0.0
+      },
+      "F_full": {
+        "goodput_mean": 0.016895984554503973,
+        "goodput_std": 0.0005005093371027454,
+        "slo_met_mean": 1.0,
+        "ttft_p95_mean": 38.46618110857958,
+        "hit_rate_mean": 0.2708333333333333,
+        "quality_breaches_total": 0,
+        "evictions_mean": 168.33333333333334,
+        "makespan_mean": 2842.967353873321,
+        "ir_ops_removed_total": 0,
+        "prefetch_issued_total": 0,
+        "prefetch_hits_total": 0,
+        "prefetch_waste_total": 0,
+        "quality_loss_mean": 0.0
+      }
+    },
+    "strong_baseline": "A_naive",
+    "f_delta_vs_strong_mean": 0.0,
+    "f_delta_vs_strong_std": 0.0,
+    "f_delta_vs_strong_per_seed": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "f_delta_vs_naive_mean": 0.0,
+    "f_seeds_won_vs_strong": 0,
+    "f_wins": false
+  }
+}

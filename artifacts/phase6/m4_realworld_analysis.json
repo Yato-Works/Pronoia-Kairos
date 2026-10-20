@@ -1,0 +1,95 @@
+{
+  "prereg": "artifacts/phase6/PREREG_M4_REALWORLD.md (locked)",
+  "env": {
+    "python": "3.11.15",
+    "torch": "2.5.1+cu121",
+    "transformers": "5.15.1",
+    "gpu": "NVIDIA GeForce RTX 3050",
+    "model": "Qwen/Qwen2.5-0.5B-Instruct"
+  },
+  "mc": {
+    "mc0": {
+      "n_decode": 32,
+      "chunk_tokens": 16,
+      "half": 8,
+      "exact": true,
+      "status": "exact"
+    },
+    "mc5": {
+      "match": true,
+      "n": 40,
+      "first_diff": null
+    },
+    "mc3": {
+      "status": "pass",
+      "unit_ok": true,
+      "unit_victim_lru": "u0",
+      "unit_victim_sem": "u0",
+      "harness_ok": true,
+      "signals_equal": true,
+      "evictions_lru": 16,
+      "evictions_sem": 16,
+      "n": 8
+    },
+    "mc2_all_match": true,
+    "mc1_stream_parity": true
+  },
+  "rows": [
+    {
+      "seed": 1,
+      "e2e_s_lru": 172.6832,
+      "e2e_s_adaptive": 166.072,
+      "delta_e2e_pct": 3.829,
+      "prefill_ms_lru": 434.299,
+      "prefill_ms_adaptive": 440.935,
+      "delta_prefill_pct": -1.528,
+      "r_overhead": 0.0004,
+      "reuse_tokens_lru": 7846,
+      "reuse_tokens_adaptive": 5921,
+      "prefill_tokens_lru": 65612,
+      "prefill_tokens_adaptive": 67537,
+      "queue_depth_mean_adaptive": 1.0
+    },
+    {
+      "seed": 2,
+      "e2e_s_lru": 157.3341,
+      "e2e_s_adaptive": 150.7797,
+      "delta_e2e_pct": 4.166,
+      "prefill_ms_lru": 426.418,
+      "prefill_ms_adaptive": 393.921,
+      "delta_prefill_pct": 7.621,
+      "r_overhead": 0.0003,
+      "reuse_tokens_lru": 7704,
+      "reuse_tokens_adaptive": 10899,
+      "prefill_tokens_lru": 65615,
+      "prefill_tokens_adaptive": 62420,
+      "queue_depth_mean_adaptive": 1.0
+    },
+    {
+      "seed": 3,
+      "e2e_s_lru": 150.6331,
+      "e2e_s_adaptive": 150.6767,
+      "delta_e2e_pct": -0.029,
+      "prefill_ms_lru": 431.995,
+      "prefill_ms_adaptive": 431.354,
+      "delta_prefill_pct": 0.148,
+      "r_overhead": null,
+      "reuse_tokens_lru": 5286,
+      "reuse_tokens_adaptive": 5286,
+      "prefill_tokens_lru": 68181,
+      "prefill_tokens_adaptive": 68181,
+      "queue_depth_mean_adaptive": 1.0
+    }
+  ],
+  "pooled": {
+    "delta_e2e_pct": 2.6553,
+    "delta_prefill_pct": 2.0803,
+    "r_overhead": 0.0003
+  },
+  "four_stage": {
+    "stage1_correctness": "pass",
+    "stage2_feasibility": "pass",
+    "stage3_performance": "measured",
+    "stage4_claim_boundary": "adaptive faster: improvement observed under applied conditions"
+  }
+}

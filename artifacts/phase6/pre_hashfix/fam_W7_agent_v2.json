@@ -1,0 +1,119 @@
+{
+  "W7_agent": {
+    "spec": {
+      "name": "W7_agent",
+      "n_requests": 60,
+      "kv_capacity_tokens": 2048,
+      "context_budget_tokens": 1536,
+      "slo_standard": 95.0,
+      "slo_tight": 60.0,
+      "tight_fraction": 0.4
+    },
+    "configs": {
+      "A_naive": {
+        "goodput_mean": 0.000853394504524515,
+        "goodput_std": 0.0013722028230938542,
+        "slo_met_mean": 0.05555555555555555,
+        "ttft_p95_mean": 225.5213599904956,
+        "hit_rate_mean": 0.4222222222222222,
+        "quality_breaches_total": 212,
+        "evictions_mean": 279.3333333333333,
+        "makespan_mean": 3953.7111487236275,
+        "ir_ops_removed_total": 0,
+        "prefetch_issued_total": 0,
+        "prefetch_hits_total": 0,
+        "prefetch_waste_total": 0,
+        "quality_loss_mean": 0.03623194444444446
+      },
+      "B_predictive": {
+        "goodput_mean": 0.004882692183191615,
+        "goodput_std": 0.00142022732041592,
+        "slo_met_mean": 0.3111111111111111,
+        "ttft_p95_mean": 95.46113234551325,
+        "hit_rate_mean": 0.3416666666666666,
+        "quality_breaches_total": 212,
+        "evictions_mean": 235.5,
+        "makespan_mean": 3824.037853865789,
+        "ir_ops_removed_total": 0,
+        "prefetch_issued_total": 0,
+        "prefetch_hits_total": 0,
+        "prefetch_waste_total": 0,
+        "quality_loss_mean": 0.03623194444444446
+      },
+      "C_queue": {
+        "goodput_mean": 0.003130589675237225,
+        "goodput_std": 0.0009800025591867136,
+        "slo_met_mean": 0.19999999999999998,
+        "ttft_p95_mean": 115.94284217816154,
+        "hit_rate_mean": 0.3416666666666666,
+        "quality_breaches_total": 212,
+        "evictions_mean": 253.66666666666666,
+        "makespan_mean": 3839.149908227862,
+        "ir_ops_removed_total": 0,
+        "prefetch_issued_total": 0,
+        "prefetch_hits_total": 0,
+        "prefetch_waste_total": 0,
+        "quality_loss_mean": 0.03623194444444446
+      },
+      "D_semantic": {
+        "goodput_mean": 0.004882692183191615,
+        "goodput_std": 0.00142022732041592,
+        "slo_met_mean": 0.3111111111111111,
+        "ttft_p95_mean": 95.46113234551325,
+        "hit_rate_mean": 0.3416666666666666,
+        "quality_breaches_total": 212,
+        "evictions_mean": 235.5,
+        "makespan_mean": 3824.037853865789,
+        "ir_ops_removed_total": 0,
+        "prefetch_issued_total": 0,
+        "prefetch_hits_total": 0,
+        "prefetch_waste_total": 0,
+        "quality_loss_mean": 0.03623194444444446
+      },
+      "E_planning": {
+        "goodput_mean": 0.006609793532148234,
+        "goodput_std": 0.0022301216915844835,
+        "slo_met_mean": 0.425,
+        "ttft_p95_mean": 113.57541749555845,
+        "hit_rate_mean": 0.37777777777777777,
+        "quality_breaches_total": 0,
+        "evictions_mean": 259.5,
+        "makespan_mean": 3862.1540802664663,
+        "ir_ops_removed_total": 67,
+        "prefetch_issued_total": 0,
+        "prefetch_hits_total": 0,
+        "prefetch_waste_total": 0,
+        "quality_loss_mean": 0.001143611111111111
+      },
+      "F_full": {
+        "goodput_mean": 0.007462064402487072,
+        "goodput_std": 0.0032105189565013064,
+        "slo_met_mean": 0.4777777777777778,
+        "ttft_p95_mean": 114.34622235867454,
+        "hit_rate_mean": 0.4083333333333334,
+        "quality_breaches_total": 0,
+        "evictions_mean": 270.8333333333333,
+        "makespan_mean": 3851.7108451364033,
+        "ir_ops_removed_total": 67,
+        "prefetch_issued_total": 174,
+        "prefetch_hits_total": 163,
+        "prefetch_waste_total": 11,
+        "quality_loss_mean": 0.001143611111111111
+      }
+    },
+    "strong_baseline": "E_planning",
+    "f_delta_vs_strong_mean": 0.0008522708703388376,
+    "f_delta_vs_strong_std": 0.0013089963144596593,
+    "f_delta_vs_strong_per_seed": [
+      0.000787,
+      0.001567,
+      0.000837,
+      -0.001292,
+      0.002683,
+      0.000532
+    ],
+    "f_delta_vs_naive_mean": 0.006608669897962557,
+    "f_seeds_won_vs_strong": 5,
+    "f_wins": true
+  }
+}

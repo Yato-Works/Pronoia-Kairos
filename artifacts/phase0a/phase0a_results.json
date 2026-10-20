@@ -1,0 +1,90 @@
+[
+  {
+    "name": "seq_scan(20x3)",
+    "capacity": 4,
+    "n_requests": 60,
+    "hit_rates": {
+      "LRU": 0.0,
+      "LFU": 0.0,
+      "GDS-like": 0.0,
+      "GDSF-like": 0.0,
+      "PEEK-like": 0.0,
+      "Belady": 0.13333333333333333
+    },
+    "regrets_vs_belady": {
+      "LRU": -8,
+      "LFU": -8,
+      "GDS-like": -8,
+      "GDSF-like": -8,
+      "PEEK-like": -8,
+      "Belady": 0
+    },
+    "belady_lru_gap_pp": -13.333333333333334
+  },
+  {
+    "name": "zipf(30,400)",
+    "capacity": 4,
+    "n_requests": 400,
+    "hit_rates": {
+      "LRU": 0.365,
+      "LFU": 0.4525,
+      "GDS-like": 0.335,
+      "GDSF-like": 0.4275,
+      "PEEK-like": 0.5475,
+      "Belady": 0.5675
+    },
+    "regrets_vs_belady": {
+      "LRU": -81,
+      "LFU": -46,
+      "GDS-like": -93,
+      "GDSF-like": -56,
+      "PEEK-like": -8,
+      "Belady": 0
+    },
+    "belady_lru_gap_pp": -20.25
+  },
+  {
+    "name": "session(6x8)",
+    "capacity": 4,
+    "n_requests": 96,
+    "hit_rates": {
+      "LRU": 0.9270833333333334,
+      "LFU": 0.9270833333333334,
+      "GDS-like": 0.9166666666666666,
+      "GDSF-like": 0.9270833333333334,
+      "PEEK-like": 0.9270833333333334,
+      "Belady": 0.9270833333333334
+    },
+    "regrets_vs_belady": {
+      "LRU": 0,
+      "LFU": 0,
+      "GDS-like": -1,
+      "GDSF-like": 0,
+      "PEEK-like": 0,
+      "Belady": 0
+    },
+    "belady_lru_gap_pp": 0.0
+  },
+  {
+    "name": "agent(60,6)",
+    "capacity": 4,
+    "n_requests": 137,
+    "hit_rates": {
+      "LRU": 0.8029197080291971,
+      "LFU": 0.8467153284671532,
+      "GDS-like": 0.7956204379562044,
+      "GDSF-like": 0.8029197080291971,
+      "PEEK-like": 0.8759124087591241,
+      "Belady": 0.8905109489051095
+    },
+    "regrets_vs_belady": {
+      "LRU": -12,
+      "LFU": -6,
+      "GDS-like": -13,
+      "GDSF-like": -12,
+      "PEEK-like": -2,
+      "Belady": 0
+    },
+    "belady_lru_gap_pp": -8.75912408759124
+  }
+]

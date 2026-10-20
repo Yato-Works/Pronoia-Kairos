@@ -1,0 +1,58 @@
+[
+  {
+    "regime": "short",
+    "capacity": 6,
+    "measured_median_distance": 2.0,
+    "recommended": "prefetch",
+    "feed_retention": false,
+    "lru_net": 0.0,
+    "retention_net": -15.0,
+    "prefetch_net": 10.600000000000001,
+    "adaptive_net": 10.600000000000001,
+    "winner": "prefetch",
+    "recommendation_correct": true,
+    "semantic_beats_lru": true
+  },
+  {
+    "regime": "mid",
+    "capacity": 6,
+    "measured_median_distance": 4.0,
+    "recommended": "prefetch",
+    "feed_retention": false,
+    "lru_net": 0.0,
+    "retention_net": -15.0,
+    "prefetch_net": 10.600000000000001,
+    "adaptive_net": 10.600000000000001,
+    "winner": "prefetch",
+    "recommendation_correct": true,
+    "semantic_beats_lru": true
+  },
+  {
+    "regime": "long",
+    "capacity": 6,
+    "measured_median_distance": 8.0,
+    "recommended": "adaptive",
+    "feed_retention": true,
+    "lru_net": 0.0,
+    "retention_net": 113.0,
+    "prefetch_net": 55.680000000000014,
+    "adaptive_net": 183.68,
+    "winner": "adaptive",
+    "recommendation_correct": true,
+    "semantic_beats_lru": true
+  },
+  {
+    "regime": "long",
+    "capacity": 6,
+    "measured_median_distance": 12.0,
+    "recommended": "adaptive",
+    "feed_retention": true,
+    "lru_net": 0.0,
+    "retention_net": 113.0,
+    "prefetch_net": 190.92000000000002,
+    "adaptive_net": 255.48000000000005,
+    "winner": "adaptive",
+    "recommendation_correct": true,
+    "semantic_beats_lru": true
+  }
+]

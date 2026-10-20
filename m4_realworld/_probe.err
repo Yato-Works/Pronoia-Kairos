@@ -1,0 +1,11 @@
+C:\Users\smily\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages\huggingface_hub\file_download.py:139: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in C:\Users\smily\.cache\huggingface\hub\models--Qwen--Qwen2.5-0.5B-Instruct. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+To support symlinks on Windows, you either need to activate Developer Mode or to run Python as an administrator. In order to activate developer mode, see this article: https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development
+  warnings.warn(message)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:  47%|####6     | 136/290 [00:00<00:00, 1281.01it/s]Loading weights:  97%|#########6| 280/290 [00:00<00:00, 1344.39it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 1382.44it/s]
+Traceback (most recent call last):
+  File "C:\Users\smily\Pronoia-Kairos\m4_realworld\_probe_api.py", line 122, in <module>
+    main()
+  File "C:\Users\smily\Pronoia-Kairos\m4_realworld\_probe_api.py", line 40, in main
+    k0 = cache.key_cache[0]
+         ^^^^^^^^^^^^^^^
+AttributeError: 'DynamicCache' object has no attribute 'key_cache'

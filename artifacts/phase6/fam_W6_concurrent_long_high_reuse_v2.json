@@ -1,0 +1,119 @@
+{
+  "W6_concurrent_long_high_reuse": {
+    "spec": {
+      "name": "W6_concurrent_long_high_reuse",
+      "n_requests": 64,
+      "kv_capacity_tokens": 2560,
+      "context_budget_tokens": 1536,
+      "slo_standard": 260.0,
+      "slo_tight": 150.0,
+      "tight_fraction": 0.45
+    },
+    "configs": {
+      "A_naive": {
+        "goodput_mean": 0.0020304143389795535,
+        "goodput_std": 0.00042810536890565236,
+        "slo_met_mean": 0.14322916666666666,
+        "ttft_p95_mean": 732.7802892424021,
+        "hit_rate_mean": 0.3177083333333333,
+        "quality_breaches_total": 0,
+        "evictions_mean": 245.16666666666666,
+        "makespan_mean": 4515.128333333332,
+        "ir_ops_removed_total": 0,
+        "prefetch_issued_total": 0,
+        "prefetch_hits_total": 0,
+        "prefetch_waste_total": 0,
+        "quality_loss_mean": 0.005208333333333335
+      },
+      "B_predictive": {
+        "goodput_mean": 0.00229565823907936,
+        "goodput_std": 0.0007955255969121065,
+        "slo_met_mean": 0.15625,
+        "ttft_p95_mean": 613.1516102684787,
+        "hit_rate_mean": 0.2630208333333333,
+        "quality_breaches_total": 0,
+        "evictions_mean": 219.16666666666666,
+        "makespan_mean": 4388.634999999999,
+        "ir_ops_removed_total": 0,
+        "prefetch_issued_total": 0,
+        "prefetch_hits_total": 0,
+        "prefetch_waste_total": 0,
+        "quality_loss_mean": 0.005208333333333335
+      },
+      "C_queue": {
+        "goodput_mean": 0.014461785233034182,
+        "goodput_std": 0.0009164460690830195,
+        "slo_met_mean": 0.875,
+        "ttft_p95_mean": 180.50673770566087,
+        "hit_rate_mean": 0.4140625,
+        "quality_breaches_total": 0,
+        "evictions_mean": 166.66666666666666,
+        "makespan_mean": 3872.3950000000004,
+        "ir_ops_removed_total": 0,
+        "prefetch_issued_total": 0,
+        "prefetch_hits_total": 0,
+        "prefetch_waste_total": 0,
+        "quality_loss_mean": 0.005208333333333335
+      },
+      "D_semantic": {
+        "goodput_mean": 0.015084152828029947,
+        "goodput_std": 0.0007938553272245368,
+        "slo_met_mean": 0.9140625,
+        "ttft_p95_mean": 163.7971602368274,
+        "hit_rate_mean": 0.3854166666666667,
+        "quality_breaches_total": 0,
+        "evictions_mean": 161.66666666666666,
+        "makespan_mean": 3877.8583333333336,
+        "ir_ops_removed_total": 0,
+        "prefetch_issued_total": 0,
+        "prefetch_hits_total": 0,
+        "prefetch_waste_total": 0,
+        "quality_loss_mean": 0.005208333333333335
+      },
+      "E_planning": {
+        "goodput_mean": 0.016129180069103247,
+        "goodput_std": 0.00047404584596286625,
+        "slo_met_mean": 0.9765625,
+        "ttft_p95_mean": 145.49863496103012,
+        "hit_rate_mean": 0.3645833333333333,
+        "quality_breaches_total": 0,
+        "evictions_mean": 157.66666666666666,
+        "makespan_mean": 3874.986666666667,
+        "ir_ops_removed_total": 325,
+        "prefetch_issued_total": 0,
+        "prefetch_hits_total": 0,
+        "prefetch_waste_total": 0,
+        "quality_loss_mean": 0.005099479166666666
+      },
+      "F_full": {
+        "goodput_mean": 0.016566221970530468,
+        "goodput_std": 0.00016238056456541815,
+        "slo_met_mean": 0.9973958333333334,
+        "ttft_p95_mean": 152.41562997647983,
+        "hit_rate_mean": 0.3697916666666667,
+        "quality_breaches_total": 0,
+        "evictions_mean": 170.0,
+        "makespan_mean": 3853.381666666668,
+        "ir_ops_removed_total": 325,
+        "prefetch_issued_total": 173,
+        "prefetch_hits_total": 166,
+        "prefetch_waste_total": 7,
+        "quality_loss_mean": 0.00508671875
+      }
+    },
+    "strong_baseline": "E_planning",
+    "f_delta_vs_strong_mean": 0.0004370419014272193,
+    "f_delta_vs_strong_std": 0.00045184747886804744,
+    "f_delta_vs_strong_per_seed": [
+      0.001317,
+      0.000447,
+      0.000326,
+      0.00032,
+      7.7e-05,
+      0.000135
+    ],
+    "f_delta_vs_naive_mean": 0.014535807631550912,
+    "f_seeds_won_vs_strong": 6,
+    "f_wins": true
+  }
+}

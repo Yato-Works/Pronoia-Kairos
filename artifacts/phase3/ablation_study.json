@@ -1,0 +1,152 @@
+[
+  {
+    "calibration": "raw",
+    "cells": {
+      "none": {
+        "calibration": "raw",
+        "mechanism": "none",
+        "regime": "mid",
+        "hits": 161,
+        "saved_compute": 0.0,
+        "prediction_overhead": 0.0,
+        "prefetch_waste_cost": 0.0,
+        "net_gain": 0.0
+      },
+      "retention": {
+        "calibration": "raw",
+        "mechanism": "retention",
+        "regime": "mid",
+        "hits": 162,
+        "saved_compute": 25.6,
+        "prediction_overhead": 15.0,
+        "prefetch_waste_cost": 0.0,
+        "net_gain": 10.600000000000001
+      },
+      "prefetch": {
+        "calibration": "raw",
+        "mechanism": "prefetch",
+        "regime": "mid",
+        "hits": 163,
+        "saved_compute": 51.2,
+        "prediction_overhead": 15.0,
+        "prefetch_waste_cost": 97.92000000000002,
+        "net_gain": -61.72000000000001
+      },
+      "both": {
+        "calibration": "raw",
+        "mechanism": "both",
+        "regime": "mid",
+        "hits": 163,
+        "saved_compute": 51.2,
+        "prediction_overhead": 15.0,
+        "prefetch_waste_cost": 97.92000000000002,
+        "net_gain": -61.72000000000001
+      }
+    },
+    "retention_contrib": 10.600000000000001,
+    "prefetch_contrib": -61.72000000000001,
+    "synergy": -10.600000000000009,
+    "both_net": -61.72000000000001,
+    "semantic_value_vs_raw": 0.0
+  },
+  {
+    "calibration": "recency",
+    "cells": {
+      "none": {
+        "calibration": "recency",
+        "mechanism": "none",
+        "regime": "mid",
+        "hits": 161,
+        "saved_compute": 0.0,
+        "prediction_overhead": 0.0,
+        "prefetch_waste_cost": 0.0,
+        "net_gain": 0.0
+      },
+      "retention": {
+        "calibration": "recency",
+        "mechanism": "retention",
+        "regime": "mid",
+        "hits": 167,
+        "saved_compute": 153.60000000000002,
+        "prediction_overhead": 15.0,
+        "prefetch_waste_cost": 0.0,
+        "net_gain": 138.60000000000002
+      },
+      "prefetch": {
+        "calibration": "recency",
+        "mechanism": "prefetch",
+        "regime": "mid",
+        "hits": 161,
+        "saved_compute": 0.0,
+        "prediction_overhead": 15.0,
+        "prefetch_waste_cost": 91.80000000000001,
+        "net_gain": -106.80000000000001
+      },
+      "both": {
+        "calibration": "recency",
+        "mechanism": "both",
+        "regime": "mid",
+        "hits": 165,
+        "saved_compute": 102.4,
+        "prediction_overhead": 15.0,
+        "prefetch_waste_cost": 85.68,
+        "net_gain": 1.7199999999999989
+      }
+    },
+    "retention_contrib": 138.60000000000002,
+    "prefetch_contrib": -106.80000000000001,
+    "synergy": -30.080000000000013,
+    "both_net": 1.7199999999999989,
+    "semantic_value_vs_raw": 63.44000000000001
+  },
+  {
+    "calibration": "popularity",
+    "cells": {
+      "none": {
+        "calibration": "popularity",
+        "mechanism": "none",
+        "regime": "mid",
+        "hits": 161,
+        "saved_compute": 0.0,
+        "prediction_overhead": 0.0,
+        "prefetch_waste_cost": 0.0,
+        "net_gain": 0.0
+      },
+      "retention": {
+        "calibration": "popularity",
+        "mechanism": "retention",
+        "regime": "mid",
+        "hits": 193,
+        "saved_compute": 819.2,
+        "prediction_overhead": 15.0,
+        "prefetch_waste_cost": 0.0,
+        "net_gain": 804.2
+      },
+      "prefetch": {
+        "calibration": "popularity",
+        "mechanism": "prefetch",
+        "regime": "mid",
+        "hits": 162,
+        "saved_compute": 25.6,
+        "prediction_overhead": 15.0,
+        "prefetch_waste_cost": 0.0,
+        "net_gain": 10.600000000000001
+      },
+      "both": {
+        "calibration": "popularity",
+        "mechanism": "both",
+        "regime": "mid",
+        "hits": 193,
+        "saved_compute": 819.2,
+        "prediction_overhead": 15.0,
+        "prefetch_waste_cost": 0.0,
+        "net_gain": 804.2
+      }
+    },
+    "retention_contrib": 804.2,
+    "prefetch_contrib": 10.600000000000001,
+    "synergy": -10.600000000000001,
+    "both_net": 804.2,
+    "semantic_value_vs_raw": 865.9200000000001
+  }
+]

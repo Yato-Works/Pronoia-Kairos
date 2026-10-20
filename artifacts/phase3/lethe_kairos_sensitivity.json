@@ -1,0 +1,106 @@
+{
+  "points": [
+    {
+      "noise": 0.1,
+      "lethe_auc": 0.8035554309109051,
+      "kairos_net": 453.9253333333334,
+      "kairos_hits": 181,
+      "kairos_hit_rate": 0.6017777777777777,
+      "net_positive": true,
+      "n_runs": 15,
+      "net_mean": 453.9253333333334,
+      "net_ci95_half": 63.63569366787254,
+      "net_std": 114.89975841493106,
+      "net_median": 414.08000000000004,
+      "auc_mean": 0.8035554309109051
+    },
+    {
+      "noise": 0.2,
+      "lethe_auc": 0.7845531970558943,
+      "kairos_net": 407.8453333333334,
+      "kairos_hits": 179,
+      "kairos_hit_rate": 0.5957777777777777,
+      "net_positive": true,
+      "n_runs": 15,
+      "net_mean": 407.8453333333334,
+      "net_ci95_half": 72.89251468892225,
+      "net_std": 131.6137507941144,
+      "net_median": 388.48,
+      "auc_mean": 0.7845531970558943
+    },
+    {
+      "noise": 0.35,
+      "lethe_auc": 0.736785206703176,
+      "kairos_net": 351.5253333333334,
+      "kairos_hits": 177,
+      "kairos_hit_rate": 0.5884444444444444,
+      "net_positive": true,
+      "n_runs": 15,
+      "net_mean": 351.5253333333334,
+      "net_ci95_half": 71.98579379736691,
+      "net_std": 129.97658766467282,
+      "net_median": 369.0,
+      "auc_mean": 0.736785206703176
+    },
+    {
+      "noise": 0.5,
+      "lethe_auc": 0.6990610445436387,
+      "kairos_net": 286.6720000000001,
+      "kairos_hits": 174,
+      "kairos_hit_rate": 0.58,
+      "net_positive": true,
+      "n_runs": 15,
+      "net_mean": 286.6720000000001,
+      "net_ci95_half": 70.86116388519899,
+      "net_std": 127.94597091853154,
+      "net_median": 266.6,
+      "auc_mean": 0.6990610445436387
+    },
+    {
+      "noise": 0.7,
+      "lethe_auc": 0.6712337617268517,
+      "kairos_net": 202.63733333333337,
+      "kairos_hits": 171,
+      "kairos_hit_rate": 0.569111111111111,
+      "net_positive": true,
+      "n_runs": 15,
+      "net_mean": 202.63733333333337,
+      "net_ci95_half": 93.4312540412933,
+      "net_std": 168.69822420382442,
+      "net_median": 189.8,
+      "auc_mean": 0.6712337617268517
+    },
+    {
+      "noise": 1.0,
+      "lethe_auc": 0.6545653956454748,
+      "kairos_net": 151.84533333333334,
+      "kairos_hits": 169,
+      "kairos_hit_rate": 0.5624444444444444,
+      "net_positive": true,
+      "n_runs": 15,
+      "net_mean": 151.84533333333334,
+      "net_ci95_half": 86.59303903495379,
+      "net_std": 156.3512345360675,
+      "net_median": 164.20000000000002,
+      "auc_mean": 0.6545653956454748
+    }
+  ],
+  "sensitivity": {
+    "slope_per_auc": 1911.716100977679,
+    "slope_per_0_1_auc": 191.1716100977679,
+    "auc_range": [
+      0.6545653956454748,
+      0.8035554309109051
+    ],
+    "net_range": [
+      151.84533333333334,
+      453.9253333333334
+    ],
+    "mean_auc": 0.7249590060976568,
+    "mean_net": 309.0751111111112,
+    "net_positive_fraction": 1.0,
+    "all_ci95_positive": true,
+    "monotone_in_noise": true,
+    "n_runs": 15
+  }
+}

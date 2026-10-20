@@ -1,0 +1,86 @@
+{
+  "points": [
+    {
+      "budget": 1024,
+      "policy": "context-only",
+      "memory_used": 896,
+      "goodput_proxy": 0.772,
+      "quality_loss": 0.0,
+      "cost": 8.96
+    },
+    {
+      "budget": 1024,
+      "policy": "cache-only",
+      "memory_used": 1024,
+      "goodput_proxy": 0.7683333333333334,
+      "quality_loss": 0.0,
+      "cost": 10.24
+    },
+    {
+      "budget": 1024,
+      "policy": "joint",
+      "memory_used": 1664,
+      "goodput_proxy": 0.8242857142857144,
+      "quality_loss": 0.10599999999999998,
+      "cost": 37.553
+    },
+    {
+      "budget": 2048,
+      "policy": "context-only",
+      "memory_used": 1920,
+      "goodput_proxy": 0.7962499999999999,
+      "quality_loss": 0.0,
+      "cost": 19.2
+    },
+    {
+      "budget": 2048,
+      "policy": "cache-only",
+      "memory_used": 2048,
+      "goodput_proxy": 0.7683333333333334,
+      "quality_loss": 0.0,
+      "cost": 20.48
+    },
+    {
+      "budget": 2048,
+      "policy": "joint",
+      "memory_used": 1920,
+      "goodput_proxy": 0.79625,
+      "quality_loss": 0.08099999999999999,
+      "cost": 37.553
+    },
+    {
+      "budget": 4096,
+      "policy": "context-only",
+      "memory_used": 3968,
+      "goodput_proxy": 0.7683333333333332,
+      "quality_loss": 0.0,
+      "cost": 39.68
+    },
+    {
+      "budget": 4096,
+      "policy": "cache-only",
+      "memory_used": 3968,
+      "goodput_proxy": 0.7683333333333334,
+      "quality_loss": 0.0,
+      "cost": 39.68
+    },
+    {
+      "budget": 4096,
+      "policy": "joint",
+      "memory_used": 3968,
+      "goodput_proxy": 0.7683333333333332,
+      "quality_loss": 0,
+      "cost": 65.903
+    }
+  ],
+  "verdict": {
+    "joint_dominates": true,
+    "quality_bounded": true,
+    "mean_goodput_gain_ctx": 5.551115123125783e-17,
+    "mean_goodput_gain_cache": 0.013958333333333184,
+    "feasible_budgets": [
+      2048,
+      4096
+    ]
+  }
+}

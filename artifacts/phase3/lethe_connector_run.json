@@ -1,0 +1,14 @@
+{
+  "source": "LetheJSONLConnector(path=C:\\Users\\smily\\AppData\\Local\\Temp\\tmp5afuywua\\lethe_recall_trace.jsonl)",
+  "regime": "mid",
+  "n_events": 300,
+  "n_objects": 20,
+  "median_reuse_distance": 7.0,
+  "net_gain_by_calibration": {
+    "raw": -93.44000000000003,
+    "recency": 149.2,
+    "popularity": 343.40000000000003
+  },
+  "best_calibration": "popularity",
+  "best_net_gain": 343.40000000000003
+}

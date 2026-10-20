@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "policy": "AdaptiveKVConnector",
+      "requests": 60,
+      "prefix_hits": 33,
+      "prefix_hit_rate": 0.55,
+      "offloads": 50,
+      "restores": 24,
+      "reused_tokens": 11136,
+      "total_tokens": 20640,
+      "effective_ttft_proxy": 586.56
+    },
+    {
+      "policy": "MockVLLMBackend",
+      "requests": 60,
+      "prefix_hits": 0,
+      "prefix_hit_rate": 0.0,
+      "offloads": 56,
+      "restores": 0,
+      "reused_tokens": 0,
+      "total_tokens": 20640,
+      "effective_ttft_proxy": 1032.0
+    },
+    {
+      "policy": "LMCacheLikeBackend",
+      "requests": 60,
+      "prefix_hits": 0,
+      "prefix_hit_rate": 0.0,
+      "offloads": 56,
+      "restores": 0,
+      "reused_tokens": 0,
+      "total_tokens": 20640,
+      "effective_ttft_proxy": 1032.0
+    }
+  ],
+  "adaptive_wins": true,
+  "best_hit_rate_policy": "AdaptiveKVConnector",
+  "best_ttft_policy": "AdaptiveKVConnector"
+}

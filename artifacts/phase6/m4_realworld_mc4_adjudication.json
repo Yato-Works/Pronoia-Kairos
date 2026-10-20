@@ -1,0 +1,377 @@
+{
+  "prereg": "artifacts/phase6/PREREG_M4_REALWORLD.md (locked; §8 addendum 9-12 records all post-lock changes)",
+  "purpose": "Preserve the MC4 result under the ORIGINAL locked threshold (slack=0.15) next to the REVISED threshold (slack=0.25, §8-12) so a third party can see exactly which criterion the final M4 stage-2 judgment rests on. The original criterion was NOT passed; the final judgment is explicitly based on the revised criterion.",
+  "original_criterion": {
+    "slack": 0.15,
+    "status": "NOT PASSED on first evaluation (Run A and Run B)",
+    "observed_stdout_logs": [
+      {
+        "run": "A",
+        "warmup": "4-token x2 (model-load only)",
+        "slack": 0.15,
+        "runs": [
+          {
+            "seed": 1,
+            "condition": "lru",
+            "status": "fail",
+            "violations": 10,
+            "pairs": 428
+          }
+        ],
+        "preserved_traces": false,
+        "note": "aborted pilot; stdout log deleted after investigation. Log transcript only — NOT recomputable."
+      },
+      {
+        "run": "B",
+        "warmup": "1840-token prefill + 32 decode x2 (§8-11 strengthening)",
+        "slack": 0.15,
+        "runs": [
+          {
+            "seed": 1,
+            "condition": "lru",
+            "status": "fail",
+            "violations": 12,
+            "pairs": 428
+          }
+        ],
+        "preserved_traces": false,
+        "note": "seed1_lru only; stdout log deleted after investigation, and Run C's full-pilot re-execution later overwrote the run file. Observed depth_pct_over_slack_line for the first 10 of 12 violations (details truncated at 10): [6.42, 4.09, 2.75, 2.68, 1.87, 0.73, 0.66, 0.56, 0.36, 0.05]; remaining 2 depths unlogged. Log transcript only."
+      }
+    ],
+    "run_c_recomputed": "rows[].original_slack_015",
+    "fails": [
+      {
+        "seed": 1,
+        "condition": "lru",
+        "violations": 3,
+        "pairs": 428
+      },
+      {
+        "seed": 1,
+        "condition": "queue_semantic",
+        "violations": 5,
+        "pairs": 487
+      }
+    ]
+  },
+  "revised_criterion": {
+    "slack": 0.25,
+    "addendum": "§8-12",
+    "status": "passed (all preserved runs)",
+    "fails": []
+  },
+  "rows": [
+    {
+      "file": "m4_realworld_seed1_lru.json",
+      "seed": 1,
+      "condition": "lru",
+      "original_slack_015": {
+        "status": "fail",
+        "pairs": 428,
+        "violations": 3,
+        "details": [
+          {
+            "reuse": 0,
+            "a": "w6-r6",
+            "b": "w6-r0",
+            "a_ms": 508.506,
+            "b_ms": 446.927,
+            "expected_min": 446.995
+          },
+          {
+            "reuse": 0,
+            "a": "w6-r16",
+            "b": "w6-r0",
+            "a_ms": 525.989,
+            "b_ms": 446.927,
+            "expected_min": 456.329
+          },
+          {
+            "reuse": 0,
+            "a": "w6-r1",
+            "b": "w6-r0",
+            "a_ms": 545.715,
+            "b_ms": 446.927,
+            "expected_min": 466.093
+          }
+        ],
+        "depth_pct_over_slack_line": [
+          4.11,
+          2.06,
+          0.02
+        ],
+        "depth_max_pct": 4.11,
+        "depth_median_pct": 2.06,
+        "systematic_anomaly_flags": {
+          "zero_or_negative_ms": false,
+          "units_scale_error": false,
+          "order_of_magnitude": false
+        }
+      },
+      "revised_slack_025": {
+        "status": "pass",
+        "pairs": 428,
+        "violations": 0,
+        "details": [],
+        "depth_pct_over_slack_line": [],
+        "depth_max_pct": 0.0,
+        "depth_median_pct": 0.0,
+        "systematic_anomaly_flags": {
+          "zero_or_negative_ms": false,
+          "units_scale_error": false,
+          "order_of_magnitude": false
+        }
+      },
+      "stored_in_run_file": {
+        "status": "pass",
+        "pairs": 428,
+        "violations": 0,
+        "details": []
+      }
+    },
+    {
+      "file": "m4_realworld_seed1_queue_semantic.json",
+      "seed": 1,
+      "condition": "queue_semantic",
+      "original_slack_015": {
+        "status": "fail",
+        "pairs": 487,
+        "violations": 5,
+        "details": [
+          {
+            "reuse": 0,
+            "a": "w6-r26",
+            "b": "w6-r27",
+            "a_ms": 530.114,
+            "b_ms": 435.596,
+            "expected_min": 453.287
+          },
+          {
+            "reuse": 0,
+            "a": "w6-r26",
+            "b": "w6-r30",
+            "a_ms": 530.114,
+            "b_ms": 449.193,
+            "expected_min": 454.021
+          },
+          {
+            "reuse": 0,
+            "a": "w6-r26",
+            "b": "w6-r15",
+            "a_ms": 530.114,
+            "b_ms": 422.32,
+            "expected_min": 455.0
+          },
+          {
+            "reuse": 0,
+            "a": "w6-r17",
+            "b": "w6-r15",
+            "a_ms": 505.098,
+            "b_ms": 422.32,
+            "expected_min": 430.723
+          },
+          {
+            "reuse": 0,
+            "a": "w6-r28",
+            "b": "w6-r15",
+            "a_ms": 498.154,
+            "b_ms": 422.32,
+            "expected_min": 424.115
+          }
+        ],
+        "depth_pct_over_slack_line": [
+          7.18,
+          3.9,
+          1.95,
+          1.06,
+          0.42
+        ],
+        "depth_max_pct": 7.18,
+        "depth_median_pct": 1.95,
+        "systematic_anomaly_flags": {
+          "zero_or_negative_ms": false,
+          "units_scale_error": false,
+          "order_of_magnitude": false
+        }
+      },
+      "revised_slack_025": {
+        "status": "pass",
+        "pairs": 487,
+        "violations": 0,
+        "details": [],
+        "depth_pct_over_slack_line": [],
+        "depth_max_pct": 0.0,
+        "depth_median_pct": 0.0,
+        "systematic_anomaly_flags": {
+          "zero_or_negative_ms": false,
+          "units_scale_error": false,
+          "order_of_magnitude": false
+        }
+      },
+      "stored_in_run_file": {
+        "status": "pass",
+        "pairs": 487,
+        "violations": 0,
+        "details": []
+      }
+    },
+    {
+      "file": "m4_realworld_seed2_lru.json",
+      "seed": 2,
+      "condition": "lru",
+      "original_slack_015": {
+        "status": "pass",
+        "pairs": 428,
+        "violations": 0,
+        "details": [],
+        "depth_pct_over_slack_line": [],
+        "depth_max_pct": 0.0,
+        "depth_median_pct": 0.0,
+        "systematic_anomaly_flags": {
+          "zero_or_negative_ms": false,
+          "units_scale_error": false,
+          "order_of_magnitude": false
+        }
+      },
+      "revised_slack_025": {
+        "status": "pass",
+        "pairs": 428,
+        "violations": 0,
+        "details": [],
+        "depth_pct_over_slack_line": [],
+        "depth_max_pct": 0.0,
+        "depth_median_pct": 0.0,
+        "systematic_anomaly_flags": {
+          "zero_or_negative_ms": false,
+          "units_scale_error": false,
+          "order_of_magnitude": false
+        }
+      },
+      "stored_in_run_file": {
+        "status": "pass",
+        "pairs": 428,
+        "violations": 0,
+        "details": []
+      }
+    },
+    {
+      "file": "m4_realworld_seed2_queue_semantic.json",
+      "seed": 2,
+      "condition": "queue_semantic",
+      "original_slack_015": {
+        "status": "pass",
+        "pairs": 341,
+        "violations": 0,
+        "details": [],
+        "depth_pct_over_slack_line": [],
+        "depth_max_pct": 0.0,
+        "depth_median_pct": 0.0,
+        "systematic_anomaly_flags": {
+          "zero_or_negative_ms": false,
+          "units_scale_error": false,
+          "order_of_magnitude": false
+        }
+      },
+      "revised_slack_025": {
+        "status": "pass",
+        "pairs": 341,
+        "violations": 0,
+        "details": [],
+        "depth_pct_over_slack_line": [],
+        "depth_max_pct": 0.0,
+        "depth_median_pct": 0.0,
+        "systematic_anomaly_flags": {
+          "zero_or_negative_ms": false,
+          "units_scale_error": false,
+          "order_of_magnitude": false
+        }
+      },
+      "stored_in_run_file": {
+        "status": "pass",
+        "pairs": 341,
+        "violations": 0,
+        "details": []
+      }
+    },
+    {
+      "file": "m4_realworld_seed3_lru.json",
+      "seed": 3,
+      "condition": "lru",
+      "original_slack_015": {
+        "status": "pass",
+        "pairs": 511,
+        "violations": 0,
+        "details": [],
+        "depth_pct_over_slack_line": [],
+        "depth_max_pct": 0.0,
+        "depth_median_pct": 0.0,
+        "systematic_anomaly_flags": {
+          "zero_or_negative_ms": false,
+          "units_scale_error": false,
+          "order_of_magnitude": false
+        }
+      },
+      "revised_slack_025": {
+        "status": "pass",
+        "pairs": 511,
+        "violations": 0,
+        "details": [],
+        "depth_pct_over_slack_line": [],
+        "depth_max_pct": 0.0,
+        "depth_median_pct": 0.0,
+        "systematic_anomaly_flags": {
+          "zero_or_negative_ms": false,
+          "units_scale_error": false,
+          "order_of_magnitude": false
+        }
+      },
+      "stored_in_run_file": {
+        "status": "pass",
+        "pairs": 511,
+        "violations": 0,
+        "details": []
+      }
+    },
+    {
+      "file": "m4_realworld_seed3_queue_semantic.json",
+      "seed": 3,
+      "condition": "queue_semantic",
+      "original_slack_015": {
+        "status": "pass",
+        "pairs": 507,
+        "violations": 0,
+        "details": [],
+        "depth_pct_over_slack_line": [],
+        "depth_max_pct": 0.0,
+        "depth_median_pct": 0.0,
+        "systematic_anomaly_flags": {
+          "zero_or_negative_ms": false,
+          "units_scale_error": false,
+          "order_of_magnitude": false
+        }
+      },
+      "revised_slack_025": {
+        "status": "pass",
+        "pairs": 507,
+        "violations": 0,
+        "details": [],
+        "depth_pct_over_slack_line": [],
+        "depth_max_pct": 0.0,
+        "depth_median_pct": 0.0,
+        "systematic_anomaly_flags": {
+          "zero_or_negative_ms": false,
+          "units_scale_error": false,
+          "order_of_magnitude": false
+        }
+      },
+      "stored_in_run_file": {
+        "status": "pass",
+        "pairs": 507,
+        "violations": 0,
+        "details": []
+      }
+    }
+  ],
+  "final_m4_stage2_judgment": "based on the REVISED criterion (slack=0.25) after the documented warmup strengthening (§8-11); the original criterion (slack=0.15) is reported above as NOT passed",
+  "grounds_for_revision": "see artifacts/phase6/MC4_ADJUDICATION.md: violation distribution, warmup measurement, engineering tolerance"
+}

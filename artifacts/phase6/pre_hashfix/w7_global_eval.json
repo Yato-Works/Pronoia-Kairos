@@ -1,0 +1,209 @@
+{
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "confs": [
+    0.0,
+    0.5,
+    1.0
+  ],
+  "rows": [
+    {
+      "family": "W1_short_chat_low_reuse",
+      "strong_mean": 0.016895984554503973,
+      "conf0.0": {
+        "goodput_mean": 0.016895984554503973,
+        "delta_vs_strong_mean": 0.0,
+        "slo_met_mean": 48.0,
+        "pf_hit_rate_mean": 0.0
+      },
+      "conf0.5": {
+        "goodput_mean": 0.016895984554503973,
+        "delta_vs_strong_mean": 0.0,
+        "slo_met_mean": 48.0,
+        "pf_hit_rate_mean": 0.0,
+        "d_goodput_vs_conf0": 0.0
+      },
+      "conf1.0": {
+        "goodput_mean": 0.016895984554503973,
+        "delta_vs_strong_mean": 0.0,
+        "slo_met_mean": 48.0,
+        "pf_hit_rate_mean": 0.0,
+        "d_goodput_vs_conf0": 0.0
+      }
+    },
+    {
+      "family": "W2_short_chat_high_reuse",
+      "strong_mean": 0.016259039083508144,
+      "conf0.0": {
+        "goodput_mean": 0.016259039083508144,
+        "delta_vs_strong_mean": 0.0,
+        "slo_met_mean": 46.0,
+        "pf_hit_rate_mean": 0.0
+      },
+      "conf0.5": {
+        "goodput_mean": 0.016259039083508144,
+        "delta_vs_strong_mean": 0.0,
+        "slo_met_mean": 46.0,
+        "pf_hit_rate_mean": 0.0,
+        "d_goodput_vs_conf0": 0.0
+      },
+      "conf1.0": {
+        "goodput_mean": 0.016259039083508144,
+        "delta_vs_strong_mean": 0.0,
+        "slo_met_mean": 46.0,
+        "pf_hit_rate_mean": 0.0,
+        "d_goodput_vs_conf0": 0.0
+      }
+    },
+    {
+      "family": "W3_long_ctx_low_reuse",
+      "strong_mean": 0.005687414446169645,
+      "conf0.0": {
+        "goodput_mean": 0.005687414446169645,
+        "delta_vs_strong_mean": 0.0,
+        "slo_met_mean": 36.333333333333336,
+        "pf_hit_rate_mean": 0.0
+      },
+      "conf0.5": {
+        "goodput_mean": 0.005687414446169645,
+        "delta_vs_strong_mean": 0.0,
+        "slo_met_mean": 36.333333333333336,
+        "pf_hit_rate_mean": 0.0,
+        "d_goodput_vs_conf0": 0.0
+      },
+      "conf1.0": {
+        "goodput_mean": 0.005687414446169645,
+        "delta_vs_strong_mean": 0.0,
+        "slo_met_mean": 36.333333333333336,
+        "pf_hit_rate_mean": 0.0,
+        "d_goodput_vs_conf0": 0.0
+      }
+    },
+    {
+      "family": "W4_long_ctx_high_reuse",
+      "strong_mean": 0.006911343811979938,
+      "conf0.0": {
+        "goodput_mean": 0.00739174214071429,
+        "delta_vs_strong_mean": 0.0004803983287343519,
+        "slo_met_mean": 45.5,
+        "pf_hit_rate_mean": 0.8776146682396683
+      },
+      "conf0.5": {
+        "goodput_mean": 0.00739174214071429,
+        "delta_vs_strong_mean": 0.0004803983287343519,
+        "slo_met_mean": 45.5,
+        "pf_hit_rate_mean": 0.8832326908952296,
+        "d_goodput_vs_conf0": 0.0
+      },
+      "conf1.0": {
+        "goodput_mean": 0.00739174214071429,
+        "delta_vs_strong_mean": 0.0004803983287343519,
+        "slo_met_mean": 45.5,
+        "pf_hit_rate_mean": 0.8832326908952296,
+        "d_goodput_vs_conf0": 0.0
+      }
+    },
+    {
+      "family": "W5_concurrent_long_low_reuse",
+      "strong_mean": 0.006829809947787167,
+      "conf0.0": {
+        "goodput_mean": 0.007856880154532437,
+        "delta_vs_strong_mean": 0.0010270702067452686,
+        "slo_met_mean": 58.666666666666664,
+        "pf_hit_rate_mean": 0.0
+      },
+      "conf0.5": {
+        "goodput_mean": 0.007856880154532437,
+        "delta_vs_strong_mean": 0.0010270702067452686,
+        "slo_met_mean": 58.666666666666664,
+        "pf_hit_rate_mean": 0.0,
+        "d_goodput_vs_conf0": 0.0
+      },
+      "conf1.0": {
+        "goodput_mean": 0.007856880154532437,
+        "delta_vs_strong_mean": 0.0010270702067452686,
+        "slo_met_mean": 58.666666666666664,
+        "pf_hit_rate_mean": 0.0,
+        "d_goodput_vs_conf0": 0.0
+      }
+    },
+    {
+      "family": "W6_concurrent_long_high_reuse",
+      "strong_mean": 0.016166433022226045,
+      "conf0.0": {
+        "goodput_mean": 0.016574167544556956,
+        "delta_vs_strong_mean": 0.00040773452233091277,
+        "slo_met_mean": 63.833333333333336,
+        "pf_hit_rate_mean": 0.954171988080034
+      },
+      "conf0.5": {
+        "goodput_mean": 0.016519028867658127,
+        "delta_vs_strong_mean": 0.00035259584543208673,
+        "slo_met_mean": 63.666666666666664,
+        "pf_hit_rate_mean": 0.948440065681445,
+        "d_goodput_vs_conf0": -5.513867689882837e-05
+      },
+      "conf1.0": {
+        "goodput_mean": 0.01651525205745924,
+        "delta_vs_strong_mean": 0.0003488190352331974,
+        "slo_met_mean": 63.666666666666664,
+        "pf_hit_rate_mean": 0.9541871921182267,
+        "d_goodput_vs_conf0": -5.891548709771599e-05
+      }
+    },
+    {
+      "family": "W7_agent",
+      "strong_mean": 0.006706580862003386,
+      "conf0.0": {
+        "goodput_mean": 0.007857742043300536,
+        "delta_vs_strong_mean": 0.0011511611812971476,
+        "slo_met_mean": 30.166666666666668,
+        "pf_hit_rate_mean": 0.9373565118895578
+      },
+      "conf0.5": {
+        "goodput_mean": 0.007864528632479646,
+        "delta_vs_strong_mean": 0.001157947770476259,
+        "slo_met_mean": 30.166666666666668,
+        "pf_hit_rate_mean": 0.9384399712692724,
+        "d_goodput_vs_conf0": 6.786589179109959e-06
+      },
+      "conf1.0": {
+        "goodput_mean": 0.007864528632479646,
+        "delta_vs_strong_mean": 0.001157947770476259,
+        "slo_met_mean": 30.166666666666668,
+        "pf_hit_rate_mean": 0.9386191827388064,
+        "d_goodput_vs_conf0": 6.786589179109959e-06
+      }
+    },
+    {
+      "family": "W8_RAG",
+      "strong_mean": 0.016445730942834334,
+      "conf0.0": {
+        "goodput_mean": 0.01647427808634892,
+        "delta_vs_strong_mean": 2.854714351458477e-05,
+        "slo_met_mean": 57.0,
+        "pf_hit_rate_mean": 0.9324306487226157
+      },
+      "conf0.5": {
+        "goodput_mean": 0.016464857440823318,
+        "delta_vs_strong_mean": 1.9126497988982322e-05,
+        "slo_met_mean": 57.0,
+        "pf_hit_rate_mean": 0.9289290664971245,
+        "d_goodput_vs_conf0": -9.42064552560129e-06
+      },
+      "conf1.0": {
+        "goodput_mean": 0.0164596294471903,
+        "delta_vs_strong_mean": 1.3898504355963279e-05,
+        "slo_met_mean": 57.0,
+        "pf_hit_rate_mean": 0.9168996208469893,
+        "d_goodput_vs_conf0": -1.4648639158620913e-05
+      }
+    }
+  ]
+}
