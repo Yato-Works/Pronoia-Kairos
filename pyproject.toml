@@ -9,6 +9,8 @@ name = "pronoia-kairos"
 version = "0.1.0"
 description = "Adaptive Inference Runtime — Semantic Demand as a shared coordination signal (research prototype)"
 requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
 dependencies = [
     "torch>=2.5",
     "transformers>=5.0",

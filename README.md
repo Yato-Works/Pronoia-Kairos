@@ -19,9 +19,15 @@ queue-aware scheduling / semantic memory の**発明を主張しない**
 
 | 検証 | 設定 | 結果 | 正本 |
 |---|---|---|---|
-| Phase 6 協調ゲート v2 | 8 家族 × 6 seed、同一 ladder | F (queue-semantic+planning+EDF+prefetch) が最良単独構成を **5/8 家族**で上回る | `artifacts/phase6/full_runtime_gate_v2.json` |
-| M1: strong baseline 再評価 | 同上、決定論バグ修正後 | **Tier 2 (+20% vs strong) は 1/8 → 未達**。旧「7/8」主張は撤回。確認的は W5/W6/W8 | `artifacts/phase6/strong_reeval.json` |
-| M3: 意味信号の因果切り分け | True vs Shuffled (対応写像 π のみ破壊)、96 ペア | **確認的 positive 6/8 家族** (W2/W4/W5/W6/W7/W8、Holm(8)<0.05 + CI95 0非含有)。W1 は予測どおり無方向 | `artifacts/phase6/m3_shuffle_analysis.json` |
+| Phase 6 協調ゲート v2 | 8 家族 × 6 seed、同一 ladder | **定義済みゲート条件を 8 中 5 ワークロードで通過** (W4-W8。W1-W3 は政策パリティのタイで非優位) | `artifacts/phase6/full_runtime_gate_v2.json` |
+| M1: strong baseline 再評価 | 上記と同一コード、決定論バグ修正後 | **Tier 2 (最強単独構成比 +20%) は 1/8 → 未達**。旧「7/8」主張は撤回。確認的は W5/W6/W8 | `artifacts/phase6/strong_reeval.json` |
+| M3: 意味信号の因果切り分け | True vs Shuffled (対応写像 π のみ破壊)、96 ペア | **事前登録の判定で 8 家族中 6 家族が確認的 positive** (W2/W4/W5/W6/W7/W8、Holm(8)<0.05 + CI95 0非含有)。W1 は予測どおり無方向 | `artifacts/phase6/m3_shuffle_analysis.json` |
+
+> **読み分け**: 上の3行はそれぞれ**別の評価であり、相互に代用できない**。
+> 「ゲート条件の通過 (5/8)」は最強構成比の優位性 (≠ 5/8 確認的優位) を
+> 意味せず、「Tier 2 1/8」はゲート条件を否定しない。M3 の 6/8 は信号の
+> 因果寄与に関する判定であり、性能ゲートとは別軸である。それぞれの
+> 事前登録は `artifacts/phase6/PREREG_*.md`。
 
 ### B. 実測 (M4 — RTX 3050 実 GPU、W6-inspired reduced workload)
 
@@ -125,4 +131,15 @@ transformers 5.15.1 / model revision `7ae5576`) は PREREG §1 に固定。
 
 ## ライセンス
 
-未設定 (公開前に選定・追加が必要)。依存: `torch`, `transformers` のみ。
+本リポジトリのコード・文書は **MIT License** (`LICENSE`)。
+
+**依存物は本リポジトリとは別ライセンス** (再配布時にご注意):
+
+| 依存物 | ライセンス |
+|---|---|
+| [PyTorch](https://github.com/pytorch/pytorch) (`torch`) | BSD-3-Clause |
+| [Hugging Face transformers](https://github.com/huggingface/transformers) | Apache-2.0 |
+| モデル重み Qwen/Qwen2.5-0.5B-Instruct (実測時のみ自動取得) | Apache-2.0 (Copyright 2024 Alibaba Cloud) |
+
+関連研究との位置づけは `docs/RELATED_WORK.md` (**位置づけの文書であり、
+性能比較は実施していない**)。

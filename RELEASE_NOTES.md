@@ -1,9 +1,11 @@
 # Release Notes (draft — V1 Release Gate)
 
-> 状態: **公開前ドラフト**。固定前に残るゲート (V1-4):
-> ①クリーン環境での第三者再現、②ライセンス選定 (現状未設定 —
-> `README.md`)、③既存研究 (vLLM prefix caching / sglang RadixAttention 等)
-> との公開比較文書、④タグ打刻。上記が済むまでタグは打たない。
+> 状態: **公開前ドラフト**。公開前残タスクは **第三者による独立再現のみ**
+> (`docs/RELEASE_CHECKLIST.md` の第4項 — `docs/REPRODUCE.md` を渡して実施)。
+> ①ライセンス (MIT) ②関連研究比較 (`docs/RELATED_WORK.md` — 位置づけの
+> 整理であり**性能比較の実施ではない**) ③README ↔ 成果物の数値照合
+> (不整合 0 件) は完了。独立再現が通ったコミットで V1 タグを打つ。
+> 現時点で「第三者による再現確認済み」は主張していない。
 
 ## v1.0.0 (draft) — Adaptive Inference Runtime research prototype
 
