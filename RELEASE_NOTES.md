@@ -1,11 +1,16 @@
 # Release Notes (draft — V1 Release Gate)
 
-> 状態: **公開前ドラフト**。公開前残タスクは **第三者による独立再現のみ**
-> (`docs/RELEASE_CHECKLIST.md` の第4項 — `docs/REPRODUCE.md` を渡して実施)。
-> ①ライセンス (MIT) ②関連研究比較 (`docs/RELATED_WORK.md` — 位置づけの
-> 整理であり**性能比較の実施ではない**) ③README ↔ 成果物の数値照合
-> (不整合 0 件) は完了。独立再現が通ったコミットで V1 タグを打つ。
-> 現時点で「第三者による再現確認済み」は主張していない。
+> 状態: **V1.0.0 Release Candidate — 公開候補版** (レビュー募集用に公開
+> 可能な状態)。**正式 v1.0.0 タグは独立再現の完了まで保留。**
+> 残タスクは第三者による独立再現のみ — 依頼書
+> `docs/REPRODUCTION_REQUEST.md` (**検証対象 `c829714`**、手順は
+> `docs/REPRODUCE.md` 単独、CPU/GPU 分離評価、記録様式は
+> `docs/RELEASE_CHECKLIST.md` 第4項)。
+> 完了済み: ①ライセンス (MIT) ②関連研究比較
+> (`docs/RELATED_WORK.md` — 位置づけの整理であり**性能比較の実施では
+> ない**) ③README ↔ 成果物の数値照合 (不整合 0 件)。
+> 独立再現が記録された最終コミットで V1.0.0 を打つ。現時点で
+> 「第三者による再現確認済み」は主張していない。
 
 ## v1.0.0 (draft) — Adaptive Inference Runtime research prototype
 

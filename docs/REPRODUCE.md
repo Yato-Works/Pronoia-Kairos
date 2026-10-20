@@ -1,5 +1,10 @@
 # 再現手順 (Reproduction Guide)
 
+> 本書は独立再現の依頼書 **`docs/REPRODUCTION_REQUEST.md`**
+> (**検証対象: コミット `c829714`**) が参照する手順書である。
+> 原則として本書に書かれた手順のみを実行し、結果は
+> `docs/RELEASE_CHECKLIST.md` 第4項に記録する。
+
 ## 環境 (実測時と同一、PREREG_M4_REALWORLD §1)
 
 | 項目 | 値 |

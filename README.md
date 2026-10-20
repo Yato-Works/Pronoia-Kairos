@@ -1,5 +1,10 @@
 # Pronoia-Kairos — Adaptive Inference Runtime
 
+> **Status: V1.0.0 Release Candidate** — 公開候補版として再現レビューを
+> 募集中。**正式 v1.0.0 タグは独立再現の完了を保留** (未実施 —
+> `docs/RELEASE_CHECKLIST.md` 第4項)。依頼内容と評価基準は
+> **`docs/REPRODUCTION_REQUEST.md`** (検証対象: `c829714`)。
+
 既存の LLM 推論キャッシュ機構 (LRU / prefix caching / queue-aware
 scheduling / prefetch) を **Semantic Demand という共有信号**で
 Runtime レベルで協調させたとき、End-to-End 性能に追加利益が存在するかを
