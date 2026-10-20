@@ -5,7 +5,7 @@
 | 1 | Strong Baseline再評価 (M1) | F と各ワークロードの最強構成の比較が完了 | **完了** (2026-10-19) |
 | 2 | 実験条件の固定 (M2) | 次回実験の評価指標、シード、判定基準を事前に記録 | **規則確立** (PREREG_STRONG_REEVAL.md §5。M3以降で適用) |
 | 3 | Semantic Demand の因果的切り分け (M3) | shuffle対照実験で信号自体の寄与を検証 | **完了** (2026-10-19) H1 支持 — 確認的 positive 6/8 家族 (`phase6/m3_shuffle_analysis.json`) |
-| 4 | Tier 4 最小実証 (M4) | 実機で効果の方向とオーバーヘッドを検証 (W5/W6対象) | **PREREG ロック済み** (2026-10-19 メンター A〜F 承認 + ロック前修正3点反映。`phase6/PREREG_M4_REALWORLD.md`。W6-inspired reduced workload / 実 GPU prefill / 実行着手) |
+| 4 | Tier 4 最小実証 (M4) | 実機で効果の方向とオーバーヘッドを検証 (W5/W6対象) | **完了** (2026-10-19) 4段階 ①pass ②pass ③measured ④適用条件つき改善 (pooled ΔE2E +2.66%)。`phase6/m4_realworld_analysis.json` + MC4 両基準保全 `phase6/MC4_ADJUDICATION.md` |
 
 ## M1 の結果 (正本: `phase6/strong_reeval.json`、事前登録: `phase6/PREREG_STRONG_REEVAL.md`)
 
