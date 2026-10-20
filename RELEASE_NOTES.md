@@ -34,8 +34,11 @@ Semantic Demand を共有信号とするキャッシュ/スケジューリング
   ①pass (output token columns exactly match with/without cache)
   ②pass (decisions reproduce the reference runtime on all 6 runs)
   ③measured (3 seeds × 40 req × 2 arms) ④**improvement observed under
-  applied conditions**: pooled E2E −2.66% (adaptive faster), prefill
-  GPU −2.08%, r_overhead 0.0003 (control ms per E2E-wall ms saved).
+  applied conditions**: E2E +2.66% (arithmetic mean of per-seed relative
+  improvements: seed1 +3.83%, seed2 +4.17%, seed3 −0.03%), prefill GPU
+  time +2.08% (seed1 −1.53%, seed2 +7.62%, seed3 +0.15%), r_overhead 0.0003
+  (reference mean of positive seeds, n=2; control ms per E2E-wall ms saved;
+  satisfies PREREG §6 criterion < 0.10).
   `artifacts/phase6/m4_realworld_analysis.json`.
 
 ### Integrity / preregistration discipline

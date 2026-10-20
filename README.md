@@ -1,150 +1,148 @@
 # Pronoia-Kairos — Adaptive Inference Runtime
 
-> **Status: V1.0.0 Release Candidate** — 公開候補版として再現レビューを
-> 募集中。**正式 v1.0.0 タグは独立再現の完了を保留** (未実施 —
-> `docs/RELEASE_CHECKLIST.md` 第4項)。依頼内容と評価基準は
-> **`docs/REPRODUCTION_REQUEST.md`** (検証対象: `c829714`)。
+**English** | [日本語 (Japanese)](./README.ja.md)
 
-既存の LLM 推論キャッシュ機構 (LRU / prefix caching / queue-aware
-scheduling / prefetch) を **Semantic Demand という共有信号**で
-Runtime レベルで協調させたとき、End-to-End 性能に追加利益が存在するかを
-検証する研究プロトタイプ。
+> **Status: V1.0.0 Release Candidate** — Open for reproduction review.
+> **The official v1.0.0 release tag is pending independent reproduction** (not yet performed — see [`docs/RELEASE_CHECKLIST.md`](./docs/RELEASE_CHECKLIST.md), item 4).
+> Instructions and evaluation criteria: **[`docs/REPRODUCTION_REQUEST.md`](./docs/REPRODUCTION_REQUEST.md)** (target commit: `c829714`).
 
-**中心仮説**: 「どのキーが将来再利用されるか」という需要の予測 (semantic
-demand) を、eviction・scheduling・prefetch・context 選択が共有する信号に
-することで、各機構を個別最適にしただけでは得られない E2E 利益が得られる。
+A research prototype evaluating whether coordinating existing LLM inference cache mechanisms (LRU, prefix caching, queue-aware scheduling, and prefetching) at the runtime layer via a **shared signal termed Semantic Demand** delivers additional end-to-end performance gains.
 
-本リポジトリは KV caching / prefix caching / predictive eviction /
-queue-aware scheduling / semantic memory の**発明を主張しない**
-(`artifacts/phase6/CLAIM_BOUNDARY.md`)。主張するのは協調の利益のみ。
+**Central Hypothesis**: Establishing demand prediction ("which keys will be reused in the future") as a shared semantic demand signal across eviction, scheduling, prefetch, and context selection enables end-to-end performance gains unobtainable through individually optimized components.
 
-## 結果サマリー
+This study investigates whether coordinating existing mechanisms through the shared Semantic Demand signal yields additional end-to-end benefits. The scope of confirmed effects and unverified aspects are detailed in the results and claim boundary below.
+This repository **does NOT claim the invention** of KV caching, prefix caching, predictive eviction, queue-aware scheduling, or semantic memory ([`artifacts/phase6/CLAIM_BOUNDARY.md`](./artifacts/phase6/CLAIM_BOUNDARY.md)).
 
-### A. シミュレーション (抽象時間モデル、決定論的)
+---
 
-| 検証 | 設定 | 結果 | 正本 |
+## Results Summary
+
+### A. Simulation (Abstract Time Model, Deterministic)
+
+| Evaluation | Configuration | Result | Provenance Artifact |
 |---|---|---|---|
-| Phase 6 協調ゲート v2 | 8 家族 × 6 seed、同一 ladder | **定義済みゲート条件を 8 中 5 ワークロードで通過** (W4-W8。W1-W3 は政策パリティのタイで非優位) | `artifacts/phase6/full_runtime_gate_v2.json` |
-| M1: strong baseline 再評価 | 上記と同一コード、決定論バグ修正後 | **Tier 2 (最強単独構成比 +20%) は 1/8 → 未達**。旧「7/8」主張は撤回。確認的は W5/W6/W8 | `artifacts/phase6/strong_reeval.json` |
-| M3: 意味信号の因果切り分け | True vs Shuffled (対応写像 π のみ破壊)、96 ペア | **事前登録の判定で 8 家族中 6 家族が確認的 positive** (W2/W4/W5/W6/W7/W8、Holm(8)<0.05 + CI95 0非含有)。W1 は予測どおり無方向 | `artifacts/phase6/m3_shuffle_analysis.json` |
+| Phase 6 Coordination Gate v2 | 8 workload families × 6 seeds, identical ladder | **Passed predefined gate conditions in 5 of 8 workloads** (W4–W8; W1–W3 showed policy-parity ties, hence non-superior) | [`artifacts/phase6/full_runtime_gate_v2.json`](./artifacts/phase6/full_runtime_gate_v2.json) |
+| M1: Strong Baseline Re-evaluation | Same code as above, post-determinism fix | **Tier 2 (+20% vs. best individual configuration) attained in 1/8 → Not achieved**. Prior "7/8" claim retracted. Holm-corrected confirmatory positive in W5, W6, W8 | [`artifacts/phase6/strong_reeval.json`](./artifacts/phase6/strong_reeval.json) |
+| M3: Causal Isolation of Semantic Signal | True vs. Shuffled (permuting mapping $\pi$ only), 96 paired runs | **Preregistered criteria yielded confirmatory positive in 6 of 8 families** (W2/W4/W5/W6/W7/W8; Holm(8)<0.05 and 95% CI excluding 0). W1 was directionless as predicted | [`artifacts/phase6/m3_shuffle_analysis.json`](./artifacts/phase6/m3_shuffle_analysis.json) |
 
-> **読み分け**: 上の3行はそれぞれ**別の評価であり、相互に代用できない**。
-> 「ゲート条件の通過 (5/8)」は最強構成比の優位性 (≠ 5/8 確認的優位) を
-> 意味せず、「Tier 2 1/8」はゲート条件を否定しない。M3 の 6/8 は信号の
-> 因果寄与に関する判定であり、性能ゲートとは別軸である。それぞれの
-> 事前登録は `artifacts/phase6/PREREG_*.md`。
+> **Interpretation Guide**: The three rows above represent **distinct evaluations answering different questions and cannot be used interchangeably**.
+> "Passing gate conditions (5/8)" does not imply confirmatory superiority over the strongest single configuration (≠ 5/8 confirmatory win), and "Tier 2 attainment of 1/8" does not invalidate the gate pass. M3's 6/8 outcome evaluates the causal contribution of the signal itself, orthogonal to the performance gates. See the locked preregistrations at [`artifacts/phase6/PREREG_*.md`](./artifacts/phase6/).
 
-### B. 実測 (M4 — RTX 3050 実 GPU、W6-inspired reduced workload)
+### B. Empirical GPU Measurement (M4 — RTX 3050 Real GPU, W6-inspired reduced workload)
 
-Qwen2.5-0.5B-Instruct fp16 / eager / batch=1 順次 / 40 req × 3 seeds ×
-2 条件 (LRU baseline vs queue_semantic)。詳細: `docs/REPRODUCE.md`。
+Qwen2.5-0.5B-Instruct fp16 / eager / sequential batch=1 / 40 requests × 3 seeds × 2 arms (LRU baseline vs. queue_semantic). Detailed protocol: [`docs/REPRODUCE.md`](./docs/REPRODUCE.md).
 
-| 検証 | 結果 |
+| Check / Metric | Empirical Result |
 |---|---|
-| 正しさ (MC0) | キャッシュあり/なしで出力トークン列 **完全一致** |
-| 決定の非複製 (MC2/MC3/MC5) | 全6実行が `AdaptiveRuntime` 参照実装と一致、LRU 退化条件一致、再現一致 |
-| 測定検査 (MC4) | 変更後基準 (slack=0.25) で全6実行 pass。**元基準 (0.15) では fail** — 両判定を併存保全: `artifacts/phase6/MC4_ADJUDICATION.md` |
-| 主指標: E2E 壁時計 | pooled **+2.66% 改善** (adaptive が速い)、seed1 +3.8% / seed2 +4.2% / seed3 −0.03% (意思決定同一) |
-| prefill GPU 時間 | pooled +2.08% 改善。seed2 で reuse 7,704→10,899 tok が prefill 減に結実 |
-| 制御オーバーヘッド | r_overhead 0.0003 (定義は下記) |
+| Correctness (MC0) | Output token sequences **match exactly** with and without cache |
+| Logic Fidelity (MC2/MC3/MC5) | All 6 runs match `AdaptiveRuntime` reference implementation; verified LRU degeneration and deterministic reproducibility |
+| Measurement Validity (MC4) | All 6 runs pass under amended slack (0.25). **Fails under original criterion (0.15)** — both determinations preserved in [`artifacts/phase6/MC4_ADJUDICATION.md`](./artifacts/phase6/MC4_ADJUDICATION.md) |
+| Primary Metric: E2E Wall-Clock | **+2.66% improvement** (arithmetic mean of per-seed relative improvements across 3 seeds: seed1 +3.83%, seed2 +4.17%, seed3 −0.03%) |
+| Prefill GPU Time | **+2.08% improvement** (arithmetic mean across 3 seeds: seed1 −1.53%, seed2 +7.62%, seed3 +0.15%). In seed2, token reuse increased from 7,704 to 10,899 tokens, directly reducing prefill duration |
+| Control Overhead Ratio | **$r_{\mathrm{overhead}} = 0.0003$** (reference mean across the two seeds with positive gains, $n=2$; defined below) |
 
-**適用条件つき**: 上記は限定条件 (高並列なし・queue 滞留なし・LRU 比のみ・
-3 seed pilot) の観測であり、「どんなワークロードでも 2.66% 高速化」は
-主張しない。確認済み/未確認の区別は「主張境界」を参照。
+**Applicability Caveat**: These empirical results were obtained under constrained conditions (no concurrency, no queue backlog, compared strictly against LRU, 3-seed pilot). We do not claim a blanket "2.66% speedup across arbitrary workloads." Refer to the Claim Boundary for verified vs. unverified distinctions.
 
-## 指標の定義 (M4)
+---
 
-- **E2E 壁時計 (`e2e_wall_s`)** — 主指標。warmup・モデルロードを除外した
-  処理ループの実時間 (最初の req 処理開始 → 最後の req 完了)。GPU 実行 +
-  制御の実時間のみを含む (PREREG §8-1)。
-- **r_overhead** — `T_control_adaptive[ms] ÷ (E2E_lru[ms] − E2E_adaptive[ms])`。
-  単位は無次元 (ms/ms)。分子は adaptive 条件の runtime 制御時間合計
-  (`perf_counter_ns` 累積、`control_ms_total`)、分母は **同 seed の paired
-  E2E 改善量 (lru − adaptive)**。分母が正の seed のみ定義され (seed3 は
-  `null`)、pooled は有効 seed の単純平均。意味: 観測改善 1 ms あたりの
-  制御コスト。`< 1` なら制御は観測改善を上回らない — **補助基準**であり、
-  最終判断は制御込み E2E 改善 (PREREG §6)。
+## Metric Definitions (M4)
 
+### Relative Improvement Calculation
+For each seed $s$, the relative improvement $I_s$ is defined as:
 
-## 主張境界 (honesty boundary)
+$$I_s = \frac{T_{\mathrm{LRU}, s} - T_{\mathrm{adaptive}, s}}{T_{\mathrm{LRU}, s}} \times 100\%$$
 
-**確認済み (このリポジトリの実測が支持する範囲)**
+- **E2E Relative Improvement (+2.66%)**: The arithmetic mean of per-seed relative improvements across 3 seeds ($( +3.829\% + 4.166\% - 0.029\% ) / 3 = +2.655\% \approx +2.66\%$). Explicitly designated as an arithmetic mean to avoid misinterpretation as a single aggregated ratio over total runtime.
+- **Prefill GPU Time Improvement (+2.08%)**: The arithmetic mean of per-seed relative improvements across 3 seeds ($( -1.528\% + 7.621\% + 0.148\% ) / 3 = +2.080\% \approx +2.08\%$).
+- **E2E Wall-Clock Time (`e2e_wall_s`)** — Primary Metric. Elapsed wall time of the request processing loop excluding warmup and model loading (from first request start to last request completion). Includes only GPU execution and runtime control time (PREREG §8-1).
 
-- 限定された GPU 実行条件における KV 再利用による計算削減
-  (reused_tokens ↑ → prefill_tokens ↓ → prefill GPU 時間 ↓)、
-  および今回観測された適用条件つき E2E 改善 (+2.66% pooled)。
-- シミュレーション範囲: 協調構成 F が最良単独構成を 5/8 家族で上回ること、
-  意味信号と需要の対応関係が 6/8 家族で確認的寄与を持つこと。
+### Control Overhead Ratio ($r_{\mathrm{overhead}}$)
 
-**未確認 (主張しない)**
+$$r_{\mathrm{overhead}} = \frac{T_{\mathrm{control, adaptive}}}{T_{\mathrm{LRU}} - T_{\mathrm{adaptive}}}$$
 
-- 高並列環境でのキュー制御効果 — M4 の queue depth は mean 1.0
-  (arrival gap 55–63 秒 ≫ service 数秒) で滞留が発生していない。
-- prefetch を含む統合効果、EDF スケジューリング改善の実機検証。
-- 3 seed を超える統計的性能優位 (pilot は統計証明に使わない)。
-- Linux / 実サービングエンジン (vLLM 等) での再現性。
-- Tier 2 (+20% vs strong): 1/8 家族のまま **未達** (`MILESTONES.md`)。
-  Tier 4/5 の体系的実機測定も別途検証が必要。
-- 最強構成 (E_planning 等) への優位 — M4 は LRU 比のみ (メンター D 判決)。
+- **Definition**: The numerator is the cumulative runtime control time in the adaptive arm (`control_ms_total` measured via `perf_counter_ns`), and the denominator is the paired E2E wall-clock improvement ($T_{\mathrm{LRU}} - T_{\mathrm{adaptive}}$) for the same seed. Dimensionless (ms/ms).
+- **Reference Metric ($n=2$)**: Defined only for seeds with a positive denominator. Seed3 is undefined (`null`) because its observed improvement was non-positive. The reported value $0.0003$ is the reference mean of the two positive seeds ($n=2$, seed1: 0.0004, seed2: 0.0003). It is not representative of all three seeds; the definitive evaluation relies on total E2E wall-clock time including control overhead.
+- **PREREG Threshold**: The locked passing threshold is $r_{\mathrm{overhead}} < 0.10$ (control overhead must not exceed 10% of observed gains, PREREG §6). The empirical measurement ($0.0003$) satisfies this requirement.
 
-**既知の制約**
+---
 
-- M4 は W6-inspired **reduced** workload (40 req・ctx ~1.8k tok・batch=1):
-  W6 の高並列・高再利用構造そのものの再現ではない。
-- 実測は RTX 3050 + 0.5B モデル。GPU クロック揺らぎ帯 (prefill peak-to-peak
-  ~29%) の中での測定 — MC4 の閾値はこれに合わせて §8-12 で改定した。
-- 将来課題: 追加シード・異なる負荷条件での性能安定性、Linux/実エンジンでの
-  再現性検証。
+## Research Claim Boundary (Honesty Boundary)
 
-## アーキテクチャ
+### Scope Confirmed in Simulation
+- **Gate v2**: Passed predefined gate conditions in 5 of 8 workloads (W4–W8). This does not demonstrate a 5/8 confirmatory advantage over the strongest individual configuration.
+- **Strong Baseline Re-evaluation (M1)**: Point estimates of relative improvement were positive in 5 families (W4–W8). However, confirmatory positive outcomes after Holm correction were observed only in 3 families (W5, W6, W8). The Tier 2 criterion ("+20% over strongest individual configuration") was achieved in only 1 of 8 families and is recorded as **not achieved**.
+- **Semantic Demand Shuffle Control (M3)**: In the preregistered True-vs-Shuffled intervention, 6 of 8 families yielded confirmatory positive outcomes in simulation. This supports the functional role of the key-demand alignment in this setup, but does not establish an identical effect in production serving environments.
+- *These evaluations are distinct, and the scope of claims supported by each must remain strictly separated.*
+
+### Scope Confirmed in Empirical GPU Measurement
+- Computation reduction via KV reuse in a constrained GPU execution regime (reused_tokens ↑ → prefill_tokens ↓ → prefill GPU time ↓), alongside the observed conditional E2E improvement (+2.66% arithmetic mean across 3 seeds).
+
+### Unconfirmed Scope (Explicit Non-Claims)
+- **Queueing benefits under high concurrency**: Mean queue depth in M4 was 1.0 (arrival gaps of 55–63 s ≫ service time of several seconds), resulting in negligible queue buildup.
+- **Integrated effects of prefetching & EDF scheduling**: Not validated on physical hardware.
+- **Statistical generalization beyond 3 seeds**: 3-seed pilot data is not used for formal statistical claims.
+- **Production serving stack portability**: Reproducibility on Linux or production serving engines (such as vLLM) remains unverified.
+- **Tier 2 Attainment**: Remains **unmet** at 1/8 families ([`artifacts/MILESTONES.md`](./artifacts/MILESTONES.md)). Systematic hardware benchmarks for Tier 4/5 require future research.
+- **Superiority over strongest configurations**: M4 evaluated gains solely against LRU; superiority over advanced baselines (e.g., E_planning) is not claimed (Mentor Ruling D).
+
+### Known Limitations
+- M4 uses a W6-inspired **reduced** workload (40 requests, context ~1.8k tokens, batch=1); it does not reproduce the scale or multi-tenant concurrency of W6.
+- Measurements were collected on an RTX 3050 with a 0.5B model, operating within a GPU clock fluctuation window (prefill peak-to-peak ~29%), which necessitated amending the MC4 slack threshold (§8-12).
+- Future directions: assessing performance stability across additional seeds, varying load conditions, and deployment on Linux/production inference engines.
+
+---
+
+## Repository Architecture
 
 ```
-runtime/        AdaptiveRuntime — 判断 (context / residency / victim /
-                signals / guard) の唯一の実装。§8-8 の直呼び規則の対象。
-semantic/       Semantic Demand 予測・較正 (M3 の π は信号読出4経路のみ)
-scheduler/      EDF 等のスケジューリング方針
-compare/        ladder (A_naive〜F)・gate・M3 shuffle ランナー/分析
-simulator/      抽象時間モデル
-m4_realworld/   M4 実 GPU 実行系 (executor / trie store / harness /
-                manipulation checks / adjudication)
-tests/          279 CPU テスト + 任意 GPU テスト (mc0_gpu)
-artifacts/      正本・PREREG・アダンダム・監査記録 (無言上書き禁止)
+runtime/        AdaptiveRuntime — Sole implementation of decisions (context,
+                residency, victim, signals, guard). Governed by §8-8 direct-call rule.
+semantic/       Semantic Demand prediction & calibration (M3 permutes key mapping π).
+scheduler/      Scheduling policies (e.g., EDF).
+compare/        Ladder configurations (A_naive through F), gates, M3 shuffle runners/analyzers.
+simulator/      Abstract time simulation model.
+m4_realworld/   M4 empirical GPU execution engine (executor, trie store, harness,
+                manipulation checks, adjudication).
+tests/          279 CPU unit/regression tests + optional GPU test (mc0_gpu).
+artifacts/      Ground-truth logs, PREREGs, addenda, and audit trails (append-only).
 ```
 
-## 再現
+---
+
+## Reproducibility
+
+To run the CPU test suite:
 
 ```powershell
-python -m pytest tests/ -k "not mc0_gpu"   # 279 passed (GPU 不要)
+python -m pytest tests/ -k "not mc0_gpu"
 ```
 
-GPU テスト・M4 再実行・adjudication 再生成の手順は
-**`docs/REPRODUCE.md`** を参照。実行環境 (python 3.11.15 / torch 2.5.1 /
-transformers 5.15.1 / model revision `7ae5576`) は PREREG §1 に固定。
+> **Expected outcome**: 279 passed, 1 deselected (no GPU required, completes in ~5 seconds).
 
-## 研究の履歴とプロトコル
+For GPU execution, re-running M4, and regenerating adjudication reports, see **[`docs/REPRODUCE.md`](./docs/REPRODUCE.md)**. The pinned runtime environment (Python 3.11.15, PyTorch 2.5.1, Transformers 5.15.1, model revision `7ae5576`) is documented in PREREG §1.
 
-- **PREREG 方式 (M2 以降の全実験)**: 評価指標・シード・判定閾値を実行前に
-  ロック → 失敗時は停止 → PREREG §8 アダンダムに記録 → 再実行。
-  **数値の無言上書きは禁止** — 変更前後は併存保全。
-  - M4 の実例: MC0 の backend 固定 (§8-9)、warmup 強化 (§8-11)、
-    MC4 slack 改定 (§8-12)。元基準での判定は `MC4_ADJUDICATION.md` に保存。
-  - M1 の実例: PYTHONHASHSEED 依存バグ検出 → 旧正本は `phase6/pre_hashfix/`。
-- 正本: `artifacts/MILESTONES.md` (全マイルストーンと Changelog)、
-  `artifacts/phase6/PREREG_*.md` (各実験の事前登録)。
-- Tier 2 未達・Tier 4/5 未検証の状態は `artifacts/phase6/TIER_ATTAINMENT.md`
-  に記録。
+---
 
-## ライセンス
+## Protocol & Provenance
 
-本リポジトリのコード・文書は **MIT License** (`LICENSE`)。
+- **PREREG Methodology (All experiments from M2 onward)**: Metrics, seeds, and decision thresholds are locked prior to execution. If a failure occurs, execution halts, details are recorded in the PREREG §8 addendum, and the experiment is re-run. **Silent overwriting of numbers is prohibited** — pre- and post-modification artifacts are preserved side-by-side.
+  - Examples from M4: Attention backend pinned to eager (§8-9), warmup standardized (§8-11), MC4 slack threshold revised (§8-12). The original criterion verdict is preserved in [`MC4_ADJUDICATION.md`](./artifacts/phase6/MC4_ADJUDICATION.md).
+  - Example from M1: Detection of PYTHONHASHSEED dependency bug → original ground-truth preserved under `phase6/pre_hashfix/`.
+- **Primary Records**: [`artifacts/MILESTONES.md`](./artifacts/MILESTONES.md) (comprehensive milestones and changelog), [`artifacts/phase6/PREREG_*.md`](./artifacts/phase6/) (experiment-specific preregistrations).
+- **Tier Attainment**: Unmet status of Tier 2 and pending validation of Tier 4/5 are tracked in [`artifacts/phase6/TIER_ATTAINMENT.md`](./artifacts/phase6/TIER_ATTAINMENT.md).
 
-**依存物は本リポジトリとは別ライセンス** (再配布時にご注意):
+---
 
-| 依存物 | ライセンス |
+## License
+
+Code and documentation in this repository are released under the **MIT License** ([`LICENSE`](./LICENSE)).
+
+**External dependencies are subject to their respective licenses**:
+
+| Dependency | License |
 |---|---|
 | [PyTorch](https://github.com/pytorch/pytorch) (`torch`) | BSD-3-Clause |
-| [Hugging Face transformers](https://github.com/huggingface/transformers) | Apache-2.0 |
-| モデル重み Qwen/Qwen2.5-0.5B-Instruct (実測時のみ自動取得) | Apache-2.0 (Copyright 2024 Alibaba Cloud) |
+| [Hugging Face Transformers](https://github.com/huggingface/transformers) (`transformers`) | Apache-2.0 |
+| Model weights: Qwen/Qwen2.5-0.5B-Instruct (downloaded automatically during empirical runs) | Apache-2.0 (Copyright 2024 Alibaba Cloud) |
 
-関連研究との位置づけは `docs/RELATED_WORK.md` (**位置づけの文書であり、
-性能比較は実施していない**)。
+For qualitative positioning alongside related works (such as CacheScout, Tessera, KVFlow, PEEK, and vLLM APC), refer to **[`docs/RELATED_WORK.md`](./docs/RELATED_WORK.md)** (**this document establishes conceptual positioning; empirical benchmark comparisons were not conducted**).

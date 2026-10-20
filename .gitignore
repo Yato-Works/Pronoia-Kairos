@@ -1,8 +1,89 @@
+# Byte-compiled / optimized / DLL files
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+.env
+.env.*
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Testing, typing, and coverage
 .pytest_cache/
-artifacts/cache/
+.hypothesis/
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+htmlcov/
+*.cover
+*.py,cover
+.mypy_cache/
+.pyre/
+.pytype/
+.ruff_cache/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+*-checkpoint.ipynb
+
+# Project-specific caches, runtime temp files, and logs
 cache/
+artifacts/cache/
 *.log
+*.err
 .m4_*.*log
 .mc0*.*log
+_probe*.*
+
+# Model weights and large external artifacts (downloaded at runtime)
+*.bin
+*.pt
+*.pth
+*.safetensors
+*.onnx
+hf_cache/
+model_cache/
+.cache/
+
+# Operating System & Editor / IDE files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# AI agents & system generated artifacts
+.agent/
+.agents/
+.system_generated/
+.gemini/

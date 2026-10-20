@@ -35,8 +35,9 @@
 
 ### 2. 関連研究比較 — 完了 (位置づけのみ)
 
-- `docs/RELATED_WORK.md`: vLLM APC / SGLang / LMCache / KVFlow / PEEK の
-  5件について「解決している問題・共通点・相違点」を表で整理。
+- `docs/RELATED_WORK.md`: vLLM APC / SGLang / LMCache / KVFlow / PEEK に加え、
+  CacheScout (2026) / Tessera (2026/09) を含む計7件について「解決している問題・
+  共通点・相違点」を表で整理。
 - **本比較は性能比較ではない**ことをドキュメント冒頭と README の
   ライセンス欄直後に明記 (メンター指示の明確化事項)。
 
@@ -44,9 +45,9 @@
 
 | # | README の記述 | 成果物 (正本) の値 | 結果 |
 |---|---|---|---|
-| 1 | E2E pooled +2.66% | `m4_realworld_analysis.json` pooled.delta_e2e_pct = 2.6553 | ✓ |
-| 2 | prefill pooled +2.08% | 同上 delta_prefill_pct = 2.0803 | ✓ |
-| 3 | r_overhead 0.0003 | 同上 r_overhead = 0.0003 | ✓ |
+| 1 | E2E +2.66% (3シード算術平均) | `m4_realworld_analysis.json` pooled.delta_e2e_pct = 2.6553 | ✓ |
+| 2 | prefill +2.08% (3シード算術平均) | 同上 delta_prefill_pct = 2.0803 | ✓ |
+| 3 | r_overhead 0.0003 (n=2 参考平均, PREREG<0.10) | 同上 r_overhead = 0.0003 | ✓ |
 | 4 | seed1 +3.8 / seed2 +4.2 / seed3 −0.03% | rows: 3.829 / 4.166 / −0.029 | ✓ |
 | 5 | seed2 reuse 7,704→10,899 | rows: 7704 → 10899 | ✓ |
 | 6 | queue depth mean 1.0 | rows: 全 seed 1.0 | ✓ |
